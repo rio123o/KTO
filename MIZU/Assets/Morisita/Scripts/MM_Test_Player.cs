@@ -33,6 +33,9 @@ public class MM_Test_Player: MonoBehaviour
 
     private Vector3 _velocity;
 
+    public GameObject[] characters;  // キャラクターオブジェクトの配列
+    private int currentIndex = 0;    // 現在のキャラクターインデックス
+
 
     private void Start()
     {
@@ -41,12 +44,15 @@ public class MM_Test_Player: MonoBehaviour
         _meshRenderer = GetComponent<MeshRenderer>();
         pState = GetComponent<MM_PlayerPhaseState>();
 
-        if (_playerInput.user.index == 0)
-            _meshRenderer.material = _playerMaterials[0];
-        else
-            _meshRenderer.material = _playerMaterials[1];
+        //if (_playerInput.user.index == 0)
+        //    _meshRenderer.material = _playerMaterials[0];
+        //else
+        //    _meshRenderer.material = _playerMaterials[1];
 
         pState.ChangeState(MM_PlayerPhaseState.State.Liquid);
+
+        // 初期のキャラクターの設定
+        SetActiveCharacter(0);
     }
 
     private void Update()
@@ -126,8 +132,8 @@ public class MM_Test_Player: MonoBehaviour
         pState.ChangeState(MM_PlayerPhaseState.State.Gas);
 
         // モデルを気体のやつに変える処理
-        //
-        //
+        // 現在のキャラクターを非アクティブに設定
+        SetActiveCharacter(1);
 
         print("GAS(気体)になりました");
     }
@@ -145,8 +151,8 @@ public class MM_Test_Player: MonoBehaviour
         pState.ChangeState(MM_PlayerPhaseState.State.Solid);
 
         // モデルを固体のやつに変える処理
-        //
-        //
+        // 現在のキャラクターを非アクティブに設定
+        SetActiveCharacter(2);
 
         print("SOLID(固体)になりました");
     }
@@ -163,8 +169,8 @@ public class MM_Test_Player: MonoBehaviour
         pState.ChangeState(MM_PlayerPhaseState.State.Liquid);
 
         // モデルを水のやつに変える処理
-        //
-        //
+        // 現在のキャラクターを非アクティブに設定
+        SetActiveCharacter(0);
 
         print("LIQUID(水)になりました");
     }
@@ -186,6 +192,17 @@ public class MM_Test_Player: MonoBehaviour
         //
 
         print("SLIME(スライム)になりました");
+
+    }
+
+    private void SetActiveCharacter(int index)
+    {
+        if(index < 0 || index >= characters.Length)
+            return;
+
+        characters[currentIndex].SetActive(false);  // 今のキャラクターの状態を非アクティブにする
+        characters[index].SetActive(true);  // indexで指定した状態をアクティブにする
+        currentIndex = index;  // 今のインデックスを更新する
 
     }
 }
