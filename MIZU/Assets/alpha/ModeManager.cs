@@ -11,6 +11,9 @@ public class ModeManager : MonoBehaviour
     [HideInInspector] public string player1ModelTag;
     [HideInInspector] public string player2ModelTag;
 
+    [HideInInspector] public GameObject Player1 => player1Model;
+    [HideInInspector] public GameObject Player2 => player2Model;
+
     void Start()
     {
         player1Mode = player1Model.GetComponent<KK_PlayerModelSwitcher>();

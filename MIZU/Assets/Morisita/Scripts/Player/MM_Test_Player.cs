@@ -296,9 +296,9 @@ public class MM_Test_Player : MonoBehaviour
     /// <summary>
     /// 液体（人型）へ変化
     /// </summary>
-    public void OnStateChangeLiquid(InputAction.CallbackContext context)
+    public void OnStateChangeLiquid(InputAction.CallbackContext context, bool force = false)
     {
-        if (!context.performed) return;
+        if (!context.performed && !force) return;
 
         // 固体・気体・スライムじゃなかったら受け付けない
         if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Liquid) return;
