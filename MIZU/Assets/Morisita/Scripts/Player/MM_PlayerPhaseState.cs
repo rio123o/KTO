@@ -19,10 +19,10 @@ public class MM_PlayerPhaseState : MonoBehaviour
     {
         m_state = State.Init;
     }
-        
+
     public void ChangeState(MM_PlayerPhaseState.State state)
     {
-        m_state=state;
+        m_state = state;
     }
 
     public State GetState()
