@@ -168,7 +168,7 @@ public class MM_Test_Player : MonoBehaviour
         StartCoroutine(IsPuddleCollisionDeadCount());
     }
     private void PlayerSlimeStateUpdateFunc() { }
-    private void Death()
+    public void Death()
     {
         _groundCheck.ResetFlag();
         this.gameObject.SetActive(false);
