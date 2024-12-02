@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GaugeController : MonoBehaviour
 {
@@ -19,7 +20,9 @@ public class GaugeController : MonoBehaviour
     public float cloud = 1;
     public float slime = 1;
 
-    private bool isDead = false;
+    //private bool isDead = false;
+
+    private List<string> allowedTags = new List<string> { "HealSpot", "Ground" };
 
     void Start()
     {
@@ -30,8 +33,8 @@ public class GaugeController : MonoBehaviour
 
     void Update()
     {
-        if (!isDead)
-        {
+        //if (!isDead)
+        //{
             string currentModelTag = (player == Player.Player1) ? _modeManager.player1ModelTag : _modeManager.player2ModelTag;
 
             // ダメージ処理
@@ -44,7 +47,7 @@ public class GaugeController : MonoBehaviour
                 // プレイヤー1がヒールスポットに衝突したかチェック
                 foreach (Collider col in _collisionManager.GetPlayer1HitColliders())
                 {
-                    if (col.gameObject.CompareTag("HealSpot"))
+                    if (allowedTags.Contains(col.gameObject.tag))
                     {
                         Heal(100f);  // プレイヤー1の回復量
                         break;
@@ -56,7 +59,7 @@ public class GaugeController : MonoBehaviour
                 // プレイヤー2がヒールスポットに衝突したかチェック
                 foreach (Collider col in _collisionManager.GetPlayer2HitColliders())
                 {
-                    if (col.gameObject.CompareTag("HealSpot"))
+                    if (allowedTags.Contains(col.gameObject.tag))
                     {
                         Heal(100f);  // プレイヤー2の回復量
                         break;
@@ -64,7 +67,7 @@ public class GaugeController : MonoBehaviour
                 }
             }
         }
-    }
+    //}
 
     public void BeInjured(float attack, string modelTag)
     {
@@ -94,16 +97,34 @@ public class GaugeController : MonoBehaviour
         Vector2 currentSize = _gauge.GetComponent<RectTransform>().sizeDelta;
         currentSize.x -= damage;
 
-        if (currentSize.x <= 0 && !isDead)
+        if (currentSize.x <= 0)
         {
             currentSize.x = 0;
-            isDead = true;
             Debug.Log(player + " is dead!");
+
+            // プレイヤー1またはプレイヤー2に対応するMM_Test_Playerスクリプトを取得
+            MM_Test_Player playerScript = null;
+
+            if (player == Player.Player1 && player1Object != null)
+            {
+                playerScript = player1Object.GetComponent<MM_Test_Player>();
+            }
+            else if (player == Player.Player2 && player2Object != null)
+            {
+                playerScript = player2Object.GetComponent<MM_Test_Player>();
+            }
+
+            // playerScriptが取得できた場合、OnStateChangeLiquidを呼び出す
+            if (playerScript != null)
+            {
+                playerScript.OnStateChangeLiquid(new InputAction.CallbackContext());
+            }
         }
 
         _gauge.GetComponent<RectTransform>().sizeDelta = currentSize;
         yield return null;
     }
+
 
     // 回復処理
     public void Heal(float healAmount)

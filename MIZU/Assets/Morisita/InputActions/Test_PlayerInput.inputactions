@@ -358,28 +358,6 @@
                 },
                 {
                     "name": "",
-                    "id": "7890def6-783e-4688-8488-2d61699763a0",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "StateChange_Slime",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "959c96a5-3b86-4fe2-a20d-49f77a6e512c",
-                    "path": "<XInputController>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "StateChange_Slime",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "d4d2af90-dbe1-4d3c-af30-efef3420a17a",
                     "path": "<XInputController>/rightTrigger",
                     "interactions": "",

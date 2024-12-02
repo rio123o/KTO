@@ -11,12 +11,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(MM_PlayerPhaseState))]
 public class MM_Test_Player : MonoBehaviour
 {
-    [SerializeField]
-    [Header("デバッグモード")]
-    bool IS_DEBUGMODE = false;
-    [SerializeField]
-    TextMeshProUGUI Debug_Phasetext;
-
     [Header("運動ステータス")]
     [SerializeField]
     private float _defaultGravity;
@@ -43,28 +37,36 @@ public class MM_Test_Player : MonoBehaviour
     private MM_GroundCheck _groundCheck;
 
     bool isOnGround = false;
+    [SerializeField]
     bool isOnWater = false;
 
     Rigidbody _rb;
     PlayerInput _playerInput;
     MeshRenderer _meshRenderer;
-    MM_PlayerPhaseState _pState;
+    MM_PlayerPhaseState _playerPhaseState;
 
+    [SerializeField]
     private Vector3 _velocity;
+    [SerializeField]
+    private Vector3 _rbvelocity;
 
     private KK_PlayerModelSwitcher _modelSwitcher;
+    private MM_Player_State_GameObject_Switcher _gameObjectSwitcher;
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _playerInput = GetComponent<PlayerInput>();
         _meshRenderer = GetComponent<MeshRenderer>();
-        _pState = GetComponent<MM_PlayerPhaseState>();
+        _playerPhaseState = GetComponent<MM_PlayerPhaseState>();
         _modelSwitcher = GetComponent<KK_PlayerModelSwitcher>(); // PlayerModelSwitcher コンポーネントを取得
+        _gameObjectSwitcher = GetComponent<MM_Player_State_GameObject_Switcher>();
 
         if (_groundCheck == null)
             Debug.LogWarning($"{nameof(_groundCheck)}がアタッチされていません");
 
-        _pState.ChangeState(MM_PlayerPhaseState.State.Liquid);
+        _gameObjectSwitcher.InitSwitch();
+        _playerPhaseState.ChangeState(MM_PlayerPhaseState.State.Liquid);
+
 
         nowGravity = _defaultGravity;
 
@@ -74,10 +76,9 @@ public class MM_Test_Player : MonoBehaviour
 
     private void Update()
     {
-        if (Debug_Phasetext != null)
-            Debug_Phasetext.text = "Player:" + _pState.GetState();
         PlayerStateUpdateFunc();
         LimitedSpeed();
+        _rbvelocity = _rb.velocity;
     }
 
     private void FixedUpdate()
@@ -98,30 +99,35 @@ public class MM_Test_Player : MonoBehaviour
 
     void Move()
     {
+        // 横移動
+        MoveHorizontal();
         // ガスの時の縦移動
-        if (_pState.GetState() == MM_PlayerPhaseState.State.Gas)
-        {
-            if (_velocity.y != 0)
-                _rb.AddForce(_velocity, ForceMode.Acceleration);
-            else
-                _rb.AddForce(new Vector3(_rb.velocity.x, -_rb.velocity.y * _InertiaPower, _rb.velocity.z), ForceMode.Acceleration);
-        }
-        // それ以外の時の横移動
-        else
-        {
-            if (_velocity.x != 0)
-                _rb.AddForce(_velocity, ForceMode.Acceleration);
-            else
-                _rb.AddForce(new Vector3(-_rb.velocity.x * _InertiaPower, _rb.velocity.y, _rb.velocity.z), ForceMode.Acceleration);
-        }
+        if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Gas)
+            MoveVertical();
     }
 
+    void MoveHorizontal()
+    {
+        if (_velocity.x != 0)
+            _rb.AddForce(_velocity, ForceMode.Acceleration);
+        else
+            _rb.AddForce(new Vector3(-_rb.velocity.x * _InertiaPower, _rb.velocity.y, _rb.velocity.z), ForceMode.Acceleration);
+
+    }
+
+    void MoveVertical()
+    {
+        if (_velocity.y != 0)
+            _rb.AddForce(_velocity, ForceMode.Acceleration);
+        else
+            _rb.AddForce(new Vector3(_rb.velocity.x, -_rb.velocity.y * _InertiaPower, _rb.velocity.z), ForceMode.Acceleration);
+    }
     void LimitedSpeed()
     {
         // 速度制限、上限を超えたら上限まで下げる
         if (GetAbsSpeed().x > _LimitXSpeed)
         {
-            _rb.velocity = new Vector3(_rb.velocity.x / (GetAbsSpeed().x/ _LimitXSpeed), _rb.velocity.y, _rb.velocity.z);
+            _rb.velocity = new Vector3(_rb.velocity.x / (GetAbsSpeed().x / _LimitXSpeed), _rb.velocity.y, _rb.velocity.z);
         }
         if (GetAbsSpeed().y > _LimitYSpeed)
         {
@@ -145,13 +151,13 @@ public class MM_Test_Player : MonoBehaviour
         _NowXSpeed = GetAbsSpeed().x;
         _NowYSpeed = GetAbsSpeed().y;
 
-        switch (_pState.GetState())
+        switch (_playerPhaseState.GetState())
         {
             case MM_PlayerPhaseState.State.Gas: PlayerGasStateUpdateFunc(); break;
             case MM_PlayerPhaseState.State.Solid: PlayerSolidStateUpdateFunc(); break;
             case MM_PlayerPhaseState.State.Liquid: PlayerLiquidStateUpdateFunc(); break;
             case MM_PlayerPhaseState.State.Slime: PlayerSlimeStateUpdateFunc(); break;
-            default: Debug.LogError($"エラー、プレイヤーのステートが{_pState.GetState()}になっています"); break;
+            default: Debug.LogError($"エラー、プレイヤーのステートが{_playerPhaseState.GetState()}になっています"); break;
         }
     }
 
@@ -169,36 +175,38 @@ public class MM_Test_Player : MonoBehaviour
     }
     // メソッド名は何でもOK
     // publicにする必要がある
-    public void OnMove(InputAction.CallbackContext context)
+    public void OnMoveHorizontal(InputAction.CallbackContext context)
     {
-        // 気体なら横移動はできない
-        if (_pState.GetState() == MM_PlayerPhaseState.State.Gas) return;
         // 固体の時水に触れてなかったら動けない
-        if (_pState.GetState() == MM_PlayerPhaseState.State.Solid)
-            if (!isOnWater) return;
+        if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Solid)
+            if (!isOnWater)
+            {
+                // Velocityをリセットする
+                _velocity = Vector3.zero;
+                return;
+            }
         // MoveActionの入力値を取得
         var axis = context.ReadValue<Vector2>();
 
-        print($"{nameof(axis.x)}:{axis.x}");
+        //print($"{nameof(axis.x)}:{axis.x}");
         // プレイヤーが右向きなら1、左なら－1
         if (axis.x != 0)
             _pRotation = axis.x > 0f ? 1 : -1;
 
         // 2Dなので横移動だけ
-        _velocity = new Vector3(axis.x * _MovePower, 0, 0);
+        _velocity = new Vector3(axis.x * _MovePower, _velocity.y, 0);
 
     }
-    public void OnGasMove(InputAction.CallbackContext context)
+    public void OnMoveVertical(InputAction.CallbackContext context)
     {
         // 気体でなければ縦移動はできない
-        if (_pState.GetState() != MM_PlayerPhaseState.State.Gas)
+        if (_playerPhaseState.GetState() != MM_PlayerPhaseState.State.Gas)
             return;
 
         // MoveActionの入力値を取得
         var axis = context.ReadValue<Vector2>();
 
-        // 気体の時は縦移動だけ
-        _velocity = new Vector3(0, axis.y * _MovePower, 0);
+        _velocity = new Vector3(_velocity.x, axis.y * _MovePower, 0);
     }
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -209,9 +217,7 @@ public class MM_Test_Player : MonoBehaviour
         // 水に触れていたら跳べない
         if (isOnWater) return;
         // 気体なら跳べない
-        if (_pState.GetState() == MM_PlayerPhaseState.State.Gas) return;
-
-        _velocity = new Vector3(_velocity.x, 0, 0);
+        if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Gas) return;
 
         _rb.AddForce(new Vector3(0, _JumpPower, 0), ForceMode.VelocityChange);
 
@@ -223,7 +229,7 @@ public class MM_Test_Player : MonoBehaviour
     private IEnumerator IsPuddleCollisionDeadCount()
     {
         float contactTime = 0f;
-        float destroyTime = 2f;
+        float destroyTime = 0.00001f;
 
         while (isOnWater)
         {
@@ -245,19 +251,19 @@ public class MM_Test_Player : MonoBehaviour
         if (!context.performed) return;
 
         // 水じゃなかったら受け付けない
-        if (_pState.GetState() != MM_PlayerPhaseState.State.Liquid) return;
+        if (_playerPhaseState.GetState() != MM_PlayerPhaseState.State.Liquid) return;
 
-        _pState.ChangeState(MM_PlayerPhaseState.State.Gas);
+        _playerPhaseState.ChangeState(MM_PlayerPhaseState.State.Gas);
 
         // 重力を0にする
         nowGravity = 0;
         // 空気抵抗を発生させる
         _rb.drag = 10;
 
-        print("GAS(気体)になりました");
+        _velocity = Vector3.zero;
+        _rb.velocity = Vector3.zero;
 
-        if (IS_DEBUGMODE)
-            return;
+        _gameObjectSwitcher.Switch(_playerPhaseState.GetState());
         // モデルを気体のやつに変える処理
         _modelSwitcher.SwitchToModel(_modelSwitcher.gasModel);
         //
@@ -272,21 +278,18 @@ public class MM_Test_Player : MonoBehaviour
         if (!context.performed) return;
 
         // 水じゃなかったら受け付けない
-        if (_pState.GetState() != MM_PlayerPhaseState.State.Liquid) return;
+        if (_playerPhaseState.GetState() != MM_PlayerPhaseState.State.Liquid) return;
 
-        _pState.ChangeState(MM_PlayerPhaseState.State.Solid);
+        _playerPhaseState.ChangeState(MM_PlayerPhaseState.State.Solid);
 
 
         _velocity = Vector3.zero;
-        //_rb.angularVelocity = Vector3.zero;
+        _rb.velocity = Vector3.zero;
 
-        print("SOLID(固体)になりました");
+        _gameObjectSwitcher.Switch(_playerPhaseState.GetState());
 
-        if (IS_DEBUGMODE)
-            return;
         // モデルを固体のやつに変える処理
         _modelSwitcher.SwitchToModel(_modelSwitcher.solidModel);
-        //
 
         print("SOLID(固体)になりました");
     }
@@ -298,23 +301,22 @@ public class MM_Test_Player : MonoBehaviour
         if (!context.performed) return;
 
         // 固体・気体・スライムじゃなかったら受け付けない
-        if (_pState.GetState() == MM_PlayerPhaseState.State.Liquid) return;
+        if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Liquid) return;
 
-        _pState.ChangeState(MM_PlayerPhaseState.State.Liquid);
+        _playerPhaseState.ChangeState(MM_PlayerPhaseState.State.Liquid);
 
         // 重力を通常に戻す
         nowGravity = _defaultGravity;
         // 空気抵抗をなくす
         _rb.drag = 0;
 
-        print("LIQUID(水)になりました");
+        _velocity = Vector3.zero;
+        _rb.velocity = Vector3.zero;
 
-        if (IS_DEBUGMODE)
-            return;
+        _gameObjectSwitcher.Switch(_playerPhaseState.GetState());
+
         // モデルを水のやつに変える処理
         _modelSwitcher.SwitchToModel(_modelSwitcher.liquidModel);
-        //
-
         print("LIQUID(水)になりました");
     }
 
@@ -326,17 +328,15 @@ public class MM_Test_Player : MonoBehaviour
         if (!context.performed) return;
 
         // 水じゃなかったら受け付けない
-        if (_pState.GetState() != MM_PlayerPhaseState.State.Liquid) return;
+        if (_playerPhaseState.GetState() != MM_PlayerPhaseState.State.Liquid) return;
 
-        _pState.ChangeState(MM_PlayerPhaseState.State.Slime);
+        _playerPhaseState.ChangeState(MM_PlayerPhaseState.State.Slime);
 
-        print("SLIME(スライム)になりました");
+        _velocity = Vector3.zero;
+        _rb.velocity = Vector3.zero;
 
-        if (IS_DEBUGMODE)
-            return;
         // モデルをスライムのやつに変える処理
         _modelSwitcher.SwitchToModel(_modelSwitcher.slimeModel);
-        //
 
         print("SLIME(スライム)になりました");
 
@@ -348,7 +348,20 @@ public class MM_Test_Player : MonoBehaviour
         return _pRotation;
     }
 
-    public Vector2 GetSpeed()
+    public Vector3 GetVelocity()
+    {
+        return _velocity;
+    }
+    public void AddVelocity(Vector3 addvelocity)
+    {
+        _velocity += addvelocity;
+    }
+
+    public void SetVelocity(Vector3 setvelocity)
+    {
+        _velocity = setvelocity;
+    }
+    public Vector3 GetSpeed()
     {
         return _rb.velocity;
     }

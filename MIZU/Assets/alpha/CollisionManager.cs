@@ -58,6 +58,10 @@ public class CollisionManager : MonoBehaviour
             {
                 // 衝突したオブジェクトをリストに追加
                 hitCollidersList.Add(hitCollider);
+
+                // 衝突したオブジェクトのタグを確認して処理
+                Debug.Log($"衝突したオブジェクト: {hitCollider.gameObject.name}, タグ: {hitCollider.tag}");
+
             }
         }
     }
