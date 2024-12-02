@@ -124,7 +124,9 @@ public class GaugeController : MonoBehaviour
             // playerScript‚ªæ“¾‚Å‚«‚½ê‡AOnStateChangeLiquid‚ğŒÄ‚Ño‚·
             if (playerScript != null)
             {
-                playerScript.OnStateChangeLiquid(new InputAction.CallbackContext(),true);
+
+                
+                playerScript.ForceStateChangeLiquid();
             }
         }
 
