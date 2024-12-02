@@ -7,30 +7,21 @@ public class MM_UICall : MonoBehaviour
 {
     [SerializeField]
     private InputAction playerPauseInputAction;
-
     [SerializeField]
-    public GameObject displayUI;
-    [SerializeField]
-    private Transform UIRoot;
+    MM_UI_Instantiate instantiateUI;
 
     private GameObject createdUI;
-    void Start()
+    private void Awake()
     {
         playerPauseInputAction.performed += CreateUI;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        playerPauseInputAction.Enable();
     }
 
     public void CreateUI(InputAction.CallbackContext context)
     {
-        print($"OnAny() : {context.control.device.name} {context.control.name}");
         if (createdUI==null)
         {
-            InstantiateUI();
+            SetUI();
             MM_TimeManager.instance.StopTime();
         }
         else
@@ -40,9 +31,8 @@ public class MM_UICall : MonoBehaviour
         }
     }
 
-    public void InstantiateUI()
+    void SetUI()
     {
-        createdUI= Instantiate(displayUI, UIRoot);
-
+       createdUI = instantiateUI.CreateUI();
     }
 }
