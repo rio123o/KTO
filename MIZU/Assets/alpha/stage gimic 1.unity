@@ -3361,14 +3361,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58bc436dca4bf2d4b9c43ea7fa9b58a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gauge: {fileID: 62512219}
-  _HP: 0
-  managerObject: {fileID: 8313812024647144966, guid: dd5a528a44627154d8fd6e42ff1f6b5b, type: 3}
+  _gauge: {fileID: 746118982}
+  _HP: 100
+  managerObject: {fileID: 386257747}
   player: 0
-  water: 1
-  ice: 1
-  cloud: 1
-  slime: 1
+  water: 0
+  ice: 0
+  cloud: 2
+  slime: 0
 --- !u!1001 &507923326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13150,13 +13150,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gauge: {fileID: 62512219}
-  _HP: 0
-  managerObject: {fileID: 8313812024647144966, guid: dd5a528a44627154d8fd6e42ff1f6b5b, type: 3}
-  player: 0
-  water: 1
-  ice: 1
-  cloud: 1
-  slime: 1
+  _HP: 100
+  managerObject: {fileID: 386257747}
+  player: 1
+  water: 0
+  ice: 0
+  cloud: 2
+  slime: 0
 --- !u!1001 &1761591522
 PrefabInstance:
   m_ObjectHideFlags: 0
