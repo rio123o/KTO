@@ -1,8 +1,10 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
-/*public class GaugeController : MonoBehaviour
+
+public class GaugeController : MonoBehaviour
 {
     [SerializeField] private GameObject _gauge;
     [SerializeField] private int _HP;
@@ -11,6 +13,8 @@ using System.Collections.Generic;
     public GameObject managerObject;  // ModeManagerがついているオブジェクト
     private ModeManager _modeManager;
     private CollisionManager _collisionManager;
+    private GameObject player1Object;
+    private GameObject player2Object;
 
     public enum Player { Player1, Player2 }
     public Player player;
@@ -29,6 +33,9 @@ using System.Collections.Generic;
         _modeManager = managerObject.GetComponent<ModeManager>();
         _collisionManager = managerObject.GetComponent<CollisionManager>();
         _HP1 = _gauge.GetComponent<RectTransform>().sizeDelta.x / _HP;
+
+        player1Object = _modeManager.Player1;
+        player2Object = _modeManager.Player2;
     }
 
     void Update()
@@ -117,7 +124,9 @@ using System.Collections.Generic;
             // playerScriptが取得できた場合、OnStateChangeLiquidを呼び出す
             if (playerScript != null)
             {
-                playerScript.OnStateChangeLiquid(new InputAction.CallbackContext());
+
+                
+                playerScript.ForceStateChangeLiquid();
             }
         }
 
@@ -148,4 +157,4 @@ using System.Collections.Generic;
         _gauge.GetComponent<RectTransform>().sizeDelta = currentSize;
         yield return null;
     }
-}*/
+}

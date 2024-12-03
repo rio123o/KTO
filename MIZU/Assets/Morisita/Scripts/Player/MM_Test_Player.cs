@@ -14,7 +14,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(MM_PlayerPhaseState))]
 public class MM_Test_Player : MonoBehaviour
 {
-    [Header("‰^“®ƒXƒe[ƒ^ƒX")]
+    [Header("é‹å‹•ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹")]
     [SerializeField]
     private float _defaultGravity;
     [SerializeField]
@@ -27,7 +27,7 @@ public class MM_Test_Player : MonoBehaviour
     private float _LimitXSpeed;
     [SerializeField]
     private float _LimitYSpeed;
-    [SerializeField, Header("Šµ«—Í,-1~10")]
+    [SerializeField, Header("æ…£æ€§åŠ›,-1~10")]
     private float _InertiaPower;
 
     [SerializeField]
@@ -63,11 +63,11 @@ public class MM_Test_Player : MonoBehaviour
         _playerInput = GetComponent<PlayerInput>();
         _meshRenderer = GetComponent<MeshRenderer>();
         _playerPhaseState = GetComponent<MM_PlayerPhaseState>();
-        _modelSwitcher = GetComponent<KK_PlayerModelSwitcher>(); // PlayerModelSwitcher ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾
+        _modelSwitcher = GetComponent<KK_PlayerModelSwitcher>(); // PlayerModelSwitcher ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—
         _gameObjectSwitcher = GetComponent<MM_Player_State_GameObject_Switcher>();
 
         if (_groundCheck == null)
-            Debug.LogWarning($"{nameof(_groundCheck)}‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+            Debug.LogWarning($"{nameof(_groundCheck)}ãŒã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã›ã‚“");
 
         _gameObjectSwitcher.InitSwitch();
         _playerPhaseState.ChangeState(MM_PlayerPhaseState.State.Liquid);
@@ -104,9 +104,9 @@ public class MM_Test_Player : MonoBehaviour
 
     void Move()
     {
-        // ‰¡ˆÚ“®
+        // æ¨ªç§»å‹•
         MoveHorizontal();
-        // ƒKƒX‚Ì‚ÌcˆÚ“®
+        // ã‚¬ã‚¹ã®æ™‚ã®ç¸¦ç§»å‹•
         if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Gas)
             MoveVertical();
     }
@@ -129,7 +129,7 @@ public class MM_Test_Player : MonoBehaviour
     }
     void LimitedSpeed()
     {
-        // ‘¬“x§ŒÀAãŒÀ‚ğ’´‚¦‚½‚çãŒÀ‚Ü‚Å‰º‚°‚é
+        // é€Ÿåº¦åˆ¶é™ã€ä¸Šé™ã‚’è¶…ãˆãŸã‚‰ä¸Šé™ã¾ã§ä¸‹ã’ã‚‹
         if (GetAbsSpeed().x > _LimitXSpeed)
         {
             _rb.velocity = new Vector3(_rb.velocity.x / (GetAbsSpeed().x / _LimitXSpeed), _rb.velocity.y, _rb.velocity.z);
@@ -139,7 +139,7 @@ public class MM_Test_Player : MonoBehaviour
             _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y / (GetAbsSpeed().y / _LimitYSpeed), _rb.velocity.z);
         }
 
-        // ŒvZ‘Å‚¿Ø‚èAˆê’èˆÈ‰º‚È‚ç0‚É‚·‚é
+        // è¨ˆç®—æ‰“ã¡åˆ‡ã‚Šã€ä¸€å®šä»¥ä¸‹ãªã‚‰0ã«ã™ã‚‹
         if (GetAbsSpeed().x < 1)
             _rb.velocity = new Vector3(0, _rb.velocity.y, _rb.velocity.z);
     }
@@ -157,7 +157,7 @@ public class MM_Test_Player : MonoBehaviour
 
     private void PlayerStateUpdateFunc()
     {
-        // ¡‚ÌƒvƒŒƒCƒ„[‚Ì‘¬“x‚ğŠm”F‚Å‚«‚é‚æ‚¤‚É‚·‚é
+        // ä»Šã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®é€Ÿåº¦ã‚’ç¢ºèªã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹
         _NowXSpeed = GetAbsSpeed().x;
         _NowYSpeed = GetAbsSpeed().y;
 
@@ -166,7 +166,7 @@ public class MM_Test_Player : MonoBehaviour
             case MM_PlayerPhaseState.State.Gas: PlayerGasStateUpdateFunc(); break;
             case MM_PlayerPhaseState.State.Solid: PlayerSolidStateUpdateFunc(); break;
             case MM_PlayerPhaseState.State.Liquid: PlayerLiquidStateUpdateFunc(); break;
-            default: Debug.LogError($"ƒGƒ‰[AƒvƒŒƒCƒ„[‚ÌƒXƒe[ƒg‚ª{_playerPhaseState.GetState()}‚É‚È‚Á‚Ä‚¢‚Ü‚·"); break;
+            default: Debug.LogError($"ã‚¨ãƒ©ãƒ¼ã€ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚¹ãƒ†ãƒ¼ãƒˆãŒ{_playerPhaseState.GetState()}ã«ãªã£ã¦ã„ã¾ã™"); break;
         }
     }
 
@@ -189,59 +189,59 @@ public class MM_Test_Player : MonoBehaviour
         GroundFlagReset();
         this.gameObject.SetActive(true);
     }
-    // ƒƒ\ƒbƒh–¼‚Í‰½‚Å‚àOK
-    // public‚É‚·‚é•K—v‚ª‚ ‚é
+    // ãƒ¡ã‚½ãƒƒãƒ‰åã¯ä½•ã§ã‚‚OK
+    // publicã«ã™ã‚‹å¿…è¦ãŒã‚ã‚‹
     public void OnMoveHorizontal(InputAction.CallbackContext context)
     {
-        // ŒÅ‘Ì‚Ì…‚ÉG‚ê‚Ä‚È‚©‚Á‚½‚ç“®‚¯‚È‚¢
+        // å›ºä½“ã®æ™‚æ°´ã«è§¦ã‚Œã¦ãªã‹ã£ãŸã‚‰å‹•ã‘ãªã„
         if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Solid)
             if (!isOnWater)
             {
-                // Velocity‚ğƒŠƒZƒbƒg‚·‚é
+                // Velocityã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹
                 _velocity = Vector3.zero;
                 return;
             }
-        // MoveAction‚Ì“ü—Í’l‚ğæ“¾
+        // MoveActionã®å…¥åŠ›å€¤ã‚’å–å¾—
         var axis = context.ReadValue<Vector2>();
 
         //print($"{nameof(axis.x)}:{axis.x}");
-        // ƒvƒŒƒCƒ„[‚ª‰EŒü‚«‚È‚ç1A¶‚È‚ç|1
+        // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒå³å‘ããªã‚‰1ã€å·¦ãªã‚‰ï¼1
         if (axis.x != 0)
             _pRotation = axis.x > 0f ? 1 : -1;
 
-        // 2D‚È‚Ì‚Å‰¡ˆÚ“®‚¾‚¯
+        // 2Dãªã®ã§æ¨ªç§»å‹•ã ã‘
         _velocity = new Vector3(axis.x * _MovePower, _velocity.y, 0);
 
     }
     public void OnMoveVertical(InputAction.CallbackContext context)
     {
-        // ‹C‘Ì‚Å‚È‚¯‚ê‚ÎcˆÚ“®‚Í‚Å‚«‚È‚¢
+        // æ°—ä½“ã§ãªã‘ã‚Œã°ç¸¦ç§»å‹•ã¯ã§ããªã„
         if (_playerPhaseState.GetState() != MM_PlayerPhaseState.State.Gas)
             return;
 
-        // MoveAction‚Ì“ü—Í’l‚ğæ“¾
+        // MoveActionã®å…¥åŠ›å€¤ã‚’å–å¾—
         var axis = context.ReadValue<Vector2>();
 
         _velocity = new Vector3(_velocity.x, axis.y * _MovePower, 0);
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-        // ‰Ÿ‚µ‚½uŠÔ‚¾‚¯”½‰‚·‚é
+        // æŠ¼ã—ãŸç¬é–“ã ã‘åå¿œã™ã‚‹
         if (!context.performed) return;
-        // ’n–Ê‚É‚¢‚È‚¢‚È‚ç’µ‚×‚È‚¢
+        // åœ°é¢ã«ã„ãªã„ãªã‚‰è·³ã¹ãªã„
         if (!isOnGround) return;
-        // …‚ÉG‚ê‚Ä‚¢‚½‚ç’µ‚×‚È‚¢
+        // æ°´ã«è§¦ã‚Œã¦ã„ãŸã‚‰è·³ã¹ãªã„
         if (isOnWater) return;
-        // ‹C‘Ì‚È‚ç’µ‚×‚È‚¢
+        // æ°—ä½“ãªã‚‰è·³ã¹ãªã„
         if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Gas) return;
 
         _rb.AddForce(new Vector3(0, _JumpPower, 0), ForceMode.VelocityChange);
 
-        //print("Jump‚ª‰Ÿ‚³‚ê‚Ü‚µ‚½");
+        //print("JumpãŒæŠ¼ã•ã‚Œã¾ã—ãŸ");
     }
 
 
-    // …‚ÉG‚ê‚½‚ç€–S‚Ü‚Å‚ÌƒJƒEƒ“ƒg‚ğŠJn
+    // æ°´ã«è§¦ã‚ŒãŸã‚‰æ­»äº¡ã¾ã§ã®ã‚«ã‚¦ãƒ³ãƒˆã‚’é–‹å§‹
     async private void IsPuddleCollisionDeadCount()
     {
         var token = this.GetCancellationTokenOnDestroy();
@@ -256,40 +256,40 @@ public class MM_Test_Player : MonoBehaviour
     }
 
     /// <summary>
-    /// ‹C‘Ì‚Ö•Ï‰»
+    /// æ°—ä½“ã¸å¤‰åŒ–
     /// </summary>
     public void OnStateChangeGas(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
 
-        // …‚¶‚á‚È‚©‚Á‚½‚çó‚¯•t‚¯‚È‚¢
+        // æ°´ã˜ã‚ƒãªã‹ã£ãŸã‚‰å—ã‘ä»˜ã‘ãªã„
         if (_playerPhaseState.GetState() != MM_PlayerPhaseState.State.Liquid) return;
 
         _playerPhaseState.ChangeState(MM_PlayerPhaseState.State.Gas);
 
-        // d—Í‚ğ0‚É‚·‚é
+        // é‡åŠ›ã‚’0ã«ã™ã‚‹
         nowGravity = 0;
-        // ‹ó‹C’ïR‚ğ”­¶‚³‚¹‚é
+        // ç©ºæ°—æŠµæŠ—ã‚’ç™ºç”Ÿã•ã›ã‚‹
         _rb.drag = 10;
 
         _velocity = Vector3.zero;
         _rb.velocity = Vector3.zero;
 
         _gameObjectSwitcher.Switch(_playerPhaseState.GetState());
-        // ƒ‚ƒfƒ‹‚ğ‹C‘Ì‚Ì‚â‚Â‚É•Ï‚¦‚éˆ—
+        // ãƒ¢ãƒ‡ãƒ«ã‚’æ°—ä½“ã®ã‚„ã¤ã«å¤‰ãˆã‚‹å‡¦ç†
         _modelSwitcher.SwitchToModel(_modelSwitcher.gasModel);
         //
 
-        print("GAS(‹C‘Ì)‚É‚È‚è‚Ü‚µ‚½");
+        print("GAS(æ°—ä½“)ã«ãªã‚Šã¾ã—ãŸ");
     }
     /// <summary>
-    /// ŒÅ‘Ì‚Ö•Ï‰»
+    /// å›ºä½“ã¸å¤‰åŒ–
     /// </summary>
     public void OnStateChangeSolid(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-
-        // …‚¶‚á‚È‚©‚Á‚½‚çó‚¯•t‚¯‚È‚¢
+        
+        // æ°´ã˜ã‚ƒãªã‹ã£ãŸã‚‰å—ã‘ä»˜ã‘ãªã„
         if (_playerPhaseState.GetState() != MM_PlayerPhaseState.State.Liquid) return;
 
         _playerPhaseState.ChangeState(MM_PlayerPhaseState.State.Solid);
@@ -300,26 +300,26 @@ public class MM_Test_Player : MonoBehaviour
 
         _gameObjectSwitcher.Switch(_playerPhaseState.GetState());
 
-        // ƒ‚ƒfƒ‹‚ğŒÅ‘Ì‚Ì‚â‚Â‚É•Ï‚¦‚éˆ—
+        // ãƒ¢ãƒ‡ãƒ«ã‚’å›ºä½“ã®ã‚„ã¤ã«å¤‰ãˆã‚‹å‡¦ç†
         _modelSwitcher.SwitchToModel(_modelSwitcher.solidModel);
 
-        print("SOLID(ŒÅ‘Ì)‚É‚È‚è‚Ü‚µ‚½");
+        print("SOLID(å›ºä½“)ã«ãªã‚Šã¾ã—ãŸ");
     }
     /// <summary>
-    /// ‰t‘ÌilŒ^j‚Ö•Ï‰»
+    /// æ¶²ä½“ï¼ˆäººå‹ï¼‰ã¸å¤‰åŒ–
     /// </summary>
     public void OnStateChangeLiquid(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-
-        // ŒÅ‘ÌE‹C‘ÌEƒXƒ‰ƒCƒ€‚¶‚á‚È‚©‚Á‚½‚çó‚¯•t‚¯‚È‚¢
+  
+        // å›ºä½“ãƒ»æ°—ä½“ãƒ»ã‚¹ãƒ©ã‚¤ãƒ ã˜ã‚ƒãªã‹ã£ãŸã‚‰å—ã‘ä»˜ã‘ãªã„
         if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Liquid) return;
 
         _playerPhaseState.ChangeState(MM_PlayerPhaseState.State.Liquid);
 
-        // d—Í‚ğ’Êí‚É–ß‚·
+        // é‡åŠ›ã‚’é€šå¸¸ã«æˆ»ã™
         nowGravity = _defaultGravity;
-        // ‹ó‹C’ïR‚ğ‚È‚­‚·
+        // ç©ºæ°—æŠµæŠ—ã‚’ãªãã™
         _rb.drag = 0;
 
         _velocity = Vector3.zero;
@@ -327,9 +327,9 @@ public class MM_Test_Player : MonoBehaviour
 
         _gameObjectSwitcher.Switch(_playerPhaseState.GetState());
 
-        // ƒ‚ƒfƒ‹‚ğ…‚Ì‚â‚Â‚É•Ï‚¦‚éˆ—
+        // ãƒ¢ãƒ‡ãƒ«ã‚’æ°´ã®ã‚„ã¤ã«å¤‰ãˆã‚‹å‡¦ç†
         _modelSwitcher.SwitchToModel(_modelSwitcher.liquidModel);
-        print("LIQUID(…)‚É‚È‚è‚Ü‚µ‚½");
+        print("LIQUID(æ°´)ã«ãªã‚Šã¾ã—ãŸ");
     }
 
     public int GetPlayerOrientation()
@@ -365,8 +365,34 @@ public class MM_Test_Player : MonoBehaviour
         return velo;
     }
 
+
     public bool GetIsDead()
     {
         return isDead;
+    } 
+   
+    public void ForceStateChangeLiquid()
+    {
+        print("uuuuuuuuuuuuuuuuuu");
+
+        // å›ºä½“ãƒ»æ°—ä½“ãƒ»ã‚¹ãƒ©ã‚¤ãƒ ã˜ã‚ƒãªã‹ã£ãŸã‚‰å—ã‘ä»˜ã‘ãªã„
+        if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Liquid) return;
+
+        _playerPhaseState.ChangeState(MM_PlayerPhaseState.State.Liquid);
+
+        // é‡åŠ›ã‚’é€šå¸¸ã«æˆ»ã™
+        nowGravity = _defaultGravity;
+        // ç©ºæ°—æŠµæŠ—ã‚’ãªãã™
+        _rb.drag = 0;
+
+        _velocity = Vector3.zero;
+        _rb.velocity = Vector3.zero;
+
+        _gameObjectSwitcher.Switch(_playerPhaseState.GetState());
+
+        // ãƒ¢ãƒ‡ãƒ«ã‚’æ°´ã®ã‚„ã¤ã«å¤‰ãˆã‚‹å‡¦ç†
+        _modelSwitcher.SwitchToModel(_modelSwitcher.liquidModel);
+        print("LIQUID(æ°´)ã«ãªã‚Šã¾ã—ãŸ");
     }
+    
 }

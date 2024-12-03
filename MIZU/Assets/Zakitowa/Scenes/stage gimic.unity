@@ -1351,12 +1351,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - player: {fileID: 585056061}
-    initialRespawnPoint: {fileID: 890549410}
-    respawnPoint: {fileID: 1045133397}
-  - player: {fileID: 1925698806}
-    initialRespawnPoint: {fileID: 890549410}
-    respawnPoint: {fileID: 1045133397}
+  - {fileID: 585056061}
+  - {fileID: 1925698806}
+  initialRespawnPoint: {fileID: 890549410}
+  respawnPoint: {fileID: 1045133397}
   fallThreshold: -10
 --- !u!1 &798601662
 GameObject:
