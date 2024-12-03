@@ -6,7 +6,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 using System;
 
-public class MM_IEffectPlayer : MonoBehaviour
+public class MM_EffectPlayer : MonoBehaviour
 {
     [Tooltip("発生させるエフェクト(パーティクル)")]
     public ParticleSystem _particle;
