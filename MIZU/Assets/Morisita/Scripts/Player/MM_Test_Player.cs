@@ -262,6 +262,11 @@ public class MM_Test_Player : MonoBehaviour
     {
         if (!context.performed) return;
 
+        OnStateChangeGas();
+    }
+
+    public void OnStateChangeGas()
+    {
         // 水じゃなかったら受け付けない
         if (_playerPhaseState.GetState() != MM_PlayerPhaseState.State.Liquid) return;
 
@@ -288,7 +293,11 @@ public class MM_Test_Player : MonoBehaviour
     public void OnStateChangeSolid(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        
+
+        OnStateChangeSolid();
+    }
+    public void OnStateChangeSolid()
+    {
         // 水じゃなかったら受け付けない
         if (_playerPhaseState.GetState() != MM_PlayerPhaseState.State.Liquid) return;
 
@@ -312,7 +321,11 @@ public class MM_Test_Player : MonoBehaviour
     {
         if (!context.performed) return;
   
-        // 固体・気体・スライムじゃなかったら受け付けない
+        OnStateChangeLiquid();
+    }
+    public void OnStateChangeLiquid()
+    {
+        // 固体・気体じゃなかったら受け付けない
         if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Liquid) return;
 
         _playerPhaseState.ChangeState(MM_PlayerPhaseState.State.Liquid);
@@ -371,28 +384,28 @@ public class MM_Test_Player : MonoBehaviour
         return isDead;
     } 
    
-    public void ForceStateChangeLiquid()
-    {
-        print("uuuuuuuuuuuuuuuuuu");
+    //public void ForceStateChangeLiquid()
+    //{
+    //    print("uuuuuuuuuuuuuuuuuu");
 
-        // 固体・気体・スライムじゃなかったら受け付けない
-        if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Liquid) return;
+    //    // 固体・気体じゃなかったら受け付けない
+    //    if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Liquid) return;
 
-        _playerPhaseState.ChangeState(MM_PlayerPhaseState.State.Liquid);
+    //    _playerPhaseState.ChangeState(MM_PlayerPhaseState.State.Liquid);
 
-        // 重力を通常に戻す
-        nowGravity = _defaultGravity;
-        // 空気抵抗をなくす
-        _rb.drag = 0;
+    //    // 重力を通常に戻す
+    //    nowGravity = _defaultGravity;
+    //    // 空気抵抗をなくす
+    //    _rb.drag = 0;
 
-        _velocity = Vector3.zero;
-        _rb.velocity = Vector3.zero;
+    //    _velocity = Vector3.zero;
+    //    _rb.velocity = Vector3.zero;
 
-        _gameObjectSwitcher.Switch(_playerPhaseState.GetState());
+    //    _gameObjectSwitcher.Switch(_playerPhaseState.GetState());
 
-        // モデルを水のやつに変える処理
-        _modelSwitcher.SwitchToModel(_modelSwitcher.liquidModel);
-        print("LIQUID(水)になりました");
-    }
+    //    // モデルを水のやつに変える処理
+    //    _modelSwitcher.SwitchToModel(_modelSwitcher.liquidModel);
+    //    print("LIQUID(水)になりました");
+    //}
     
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MM_Player_TransformEffect : MM_IEffectPlayer
+public class MM_Player_TransformEffect : MM_EffectPlayer
 {
     private MM_PlayerPhaseState.State oldState;
     private MM_PlayerPhaseState pState;
