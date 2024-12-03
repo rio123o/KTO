@@ -22,7 +22,7 @@ public class MM_OneWayTrigger : MonoBehaviour
         if (hitCollider == null || myCollider == null)
             return;
 
-        if (playerTrigger.GetTrigger())
+        if (playerTrigger.GetIsTrigger())
         {
             Physics.IgnoreCollision(hitCollider,myCollider, true);
         }

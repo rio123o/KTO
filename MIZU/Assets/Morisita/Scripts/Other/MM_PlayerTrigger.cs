@@ -25,7 +25,7 @@ public class MM_PlayerTrigger : MonoBehaviour
 
     }
 
-    public bool GetTrigger() { return isTrigger; }
+    public bool GetIsTrigger() { return isTrigger; }
     public Collider GethitCollider() { return hitCollider; }
 
 }
