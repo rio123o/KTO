@@ -245,13 +245,17 @@ public class MM_Test_Player : MonoBehaviour
     async private void IsPuddleCollisionDeadCount()
     {
         var token = this.GetCancellationTokenOnDestroy();
-
+        float contactTime = 0f;
         float destroyTime = 0.00001f;
-        //float destroyTime = 1f;
-        while (isOnWater)
+        //float destroyTime = 3f;
+
+        while(isOnWater)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(destroyTime), cancellationToken: token);
-            Death();
+            contactTime += Time.deltaTime;
+
+            await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken: token);
+            if (contactTime >= destroyTime)
+                Death();
         }
     }
 
@@ -320,7 +324,7 @@ public class MM_Test_Player : MonoBehaviour
     public void OnStateChangeLiquid(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-  
+
         OnStateChangeLiquid();
     }
     public void OnStateChangeLiquid()
@@ -382,8 +386,8 @@ public class MM_Test_Player : MonoBehaviour
     public bool GetIsDead()
     {
         return isDead;
-    } 
-   
+    }
+
     //public void ForceStateChangeLiquid()
     //{
     //    print("uuuuuuuuuuuuuuuuuu");
@@ -407,5 +411,5 @@ public class MM_Test_Player : MonoBehaviour
     //    _modelSwitcher.SwitchToModel(_modelSwitcher.liquidModel);
     //    print("LIQUID(水)になりました");
     //}
-    
+
 }
