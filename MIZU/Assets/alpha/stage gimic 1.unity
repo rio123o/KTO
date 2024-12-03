@@ -4783,7 +4783,7 @@ Transform:
   m_GameObject: {fileID: 558195303}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 103.91, y: 13.3, z: 0}
+  m_LocalPosition: {x: 104.74, y: 13.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14712,10 +14712,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   water: {fileID: 33797763}
-  ascendAmount: 20
-  descendAmount: 1
+  ascendAmount: 1
+  descendAmount: 20
   moveSpeed: 2
-  isAscending: 1
+  isAscending: 0
 --- !u!65 &1609625932
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16942,7 +16942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0604623366247214496cc374d1cb3678, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.1
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0604623366247214496cc374d1cb3678, type: 3}
       propertyPath: m_LocalPosition.y
