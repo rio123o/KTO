@@ -22,13 +22,13 @@ public class KK_PlayerModelSwitcher : MonoBehaviour
         if (transformationEffect != null)
         {
             transformationEffect.SetActive(false);  // ゲーム開始時にエフェクトを無効化
-            Debug.Log("Transformation effect set to inactive at game start.");
+            //Debug.Log("Transformation effect set to inactive at game start.");
         }
     }
 
     public void SwitchToModel(GameObject newModel)
     {
-        Debug.Log("Switching model to: " + newModel.name);
+        ///Debug.Log("Switching model to: " + newModel.name);
 
         // 現在のモデルがあれば非アクティブにする
         if (currentModel != null)
@@ -40,7 +40,7 @@ public class KK_PlayerModelSwitcher : MonoBehaviour
         // 新しいモデルを設定してアクティブにする
         currentModel = newModel;
         currentModel.SetActive(true);
-        Debug.Log("New model activated: " + currentModel.name);
+        //Debug.Log("New model activated: " + currentModel.name);
 
         // 変身エフェクトを表示する処理を開始
         if (transformationEffect != null)

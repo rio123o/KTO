@@ -1,5 +1,8 @@
+using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
 using Unity.Profiling;
 using UnityEngine;
@@ -39,6 +42,8 @@ public class MM_Test_Player : MonoBehaviour
     bool isOnGround = false;
     [SerializeField]
     bool isOnWater = false;
+    [SerializeField]
+    bool isDead = false;
 
     Rigidbody _rb;
     PlayerInput _playerInput;
@@ -144,6 +149,11 @@ public class MM_Test_Player : MonoBehaviour
         isOnGround = _groundCheck.IsGround();
         isOnWater = _groundCheck.IsPuddle();
     }
+    private void GroundFlagReset()
+    {
+        _groundCheck.ResetFlag();
+        GroundCheck();
+    }
 
     private void PlayerStateUpdateFunc()
     {
@@ -156,7 +166,6 @@ public class MM_Test_Player : MonoBehaviour
             case MM_PlayerPhaseState.State.Gas: PlayerGasStateUpdateFunc(); break;
             case MM_PlayerPhaseState.State.Solid: PlayerSolidStateUpdateFunc(); break;
             case MM_PlayerPhaseState.State.Liquid: PlayerLiquidStateUpdateFunc(); break;
-            case MM_PlayerPhaseState.State.Slime: PlayerSlimeStateUpdateFunc(); break;
             default: Debug.LogError($"エラー、プレイヤーのステートが{_playerPhaseState.GetState()}になっています"); break;
         }
     }
@@ -165,13 +174,20 @@ public class MM_Test_Player : MonoBehaviour
     private void PlayerSolidStateUpdateFunc() { }
     private void PlayerLiquidStateUpdateFunc()
     {
-        StartCoroutine(IsPuddleCollisionDeadCount());
+        IsPuddleCollisionDeadCount();
     }
-    private void PlayerSlimeStateUpdateFunc() { }
     public void Death()
     {
-        _groundCheck.ResetFlag();
+        isDead = true;
+        GroundFlagReset();
         this.gameObject.SetActive(false);
+    }
+
+    public void Rivive()
+    {
+        isDead = false;
+        GroundFlagReset();
+        this.gameObject.SetActive(true);
     }
     // メソッド名は何でもOK
     // publicにする必要がある
@@ -221,25 +237,21 @@ public class MM_Test_Player : MonoBehaviour
 
         _rb.AddForce(new Vector3(0, _JumpPower, 0), ForceMode.VelocityChange);
 
-        print("Jumpが押されました");
+        //print("Jumpが押されました");
     }
 
 
     // 水に触れたら死亡までのカウントを開始
-    private IEnumerator IsPuddleCollisionDeadCount()
+    async private void IsPuddleCollisionDeadCount()
     {
-        float contactTime = 0f;
-        float destroyTime = 0.00001f;
+        var token = this.GetCancellationTokenOnDestroy();
 
+        float destroyTime = 0.00001f;
+        //float destroyTime = 1f;
         while (isOnWater)
         {
-            contactTime += Time.deltaTime;
-            yield return null;
-            if (contactTime >= destroyTime)
-            {
-                Death();
-            }
-            // print($"{nameof(contactTime)}:{contactTime}");
+            await UniTask.Delay(TimeSpan.FromSeconds(destroyTime), cancellationToken: token);
+            Death();
         }
     }
 
@@ -320,29 +332,6 @@ public class MM_Test_Player : MonoBehaviour
         print("LIQUID(水)になりました");
     }
 
-    /// <summary>
-    /// スライムへ変化
-    /// </summary>
-    public void OnStateChangeSlime(InputAction.CallbackContext context)
-    {
-        if (!context.performed) return;
-
-        // 水じゃなかったら受け付けない
-        if (_playerPhaseState.GetState() != MM_PlayerPhaseState.State.Liquid) return;
-
-        _playerPhaseState.ChangeState(MM_PlayerPhaseState.State.Slime);
-
-        _velocity = Vector3.zero;
-        _rb.velocity = Vector3.zero;
-
-        // モデルをスライムのやつに変える処理
-        _modelSwitcher.SwitchToModel(_modelSwitcher.slimeModel);
-
-        print("SLIME(スライム)になりました");
-
-    }
-
-
     public int GetPlayerOrientation()
     {
         return _pRotation;
@@ -374,5 +363,10 @@ public class MM_Test_Player : MonoBehaviour
         velo.y = Mathf.Sqrt(Mathf.Pow(_rb.velocity.y, 2));
 
         return velo;
+    }
+
+    public bool GetIsDead()
+    {
+        return isDead;
     }
 }

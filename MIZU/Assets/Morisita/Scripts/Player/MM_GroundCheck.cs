@@ -33,7 +33,7 @@ public class MM_GroundCheck : MonoBehaviour
         isWaterStay = false;
         isWaterExit = false;
 
-        print("GroudFlagReset");
+        //print("GroudFlagReset");
     }
 
     //接地判定を返すメソッド

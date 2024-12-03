@@ -10,7 +10,6 @@ public class MM_PlayerPhaseState : MonoBehaviour
         Liquid, // …
         Gas,    // ‹C‘Ì
         Solid,  // ŒÅ‘Ì
-        Slime,  // ƒXƒ‰ƒCƒ€
     }
 
     private State m_state;

@@ -139,7 +139,6 @@ public class Alpha_Player : MonoBehaviour
             case MM_PlayerPhaseState.State.Gas: PlayerGasStateUpdateFunc(); break;
             case MM_PlayerPhaseState.State.Solid: PlayerSolidStateUpdateFunc(); break;
             case MM_PlayerPhaseState.State.Liquid: PlayerLiquidStateUpdateFunc(); break;
-            case MM_PlayerPhaseState.State.Slime: PlayerSlimeStateUpdateFunc(); break;
             default: Debug.LogError($"エラー、プレイヤーのステートが{_pState.GetState()}になっています"); break;
         }
     }
@@ -191,7 +190,6 @@ public class Alpha_Player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha1)) OnStateChangeGas();
             if (Input.GetKeyDown(KeyCode.Alpha2)) OnStateChangeSolid();
             if (Input.GetKeyDown(KeyCode.Alpha3)) OnStateChangeLiquid();
-            if (Input.GetKeyDown(KeyCode.Alpha4)) OnStateChangeSlime();
         }
         else // Player 2の操作
         {
@@ -220,7 +218,6 @@ public class Alpha_Player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha7)) OnStateChangeGas();
             if (Input.GetKeyDown(KeyCode.Alpha8)) OnStateChangeSolid();
             if (Input.GetKeyDown(KeyCode.Alpha9)) OnStateChangeLiquid();
-            if (Input.GetKeyDown(KeyCode.Alpha0)) OnStateChangeSlime();
         }
 
         // モード切替のキー入力
@@ -286,15 +283,6 @@ public class Alpha_Player : MonoBehaviour
 
         // モデルを液体のやつに変える処理
         _modelSwitcher.SwitchToModel(_modelSwitcher.liquidModel);
-    }
-
-    public void OnStateChangeSlime()
-    {
-        Debug.Log("Slime state change called");
-        _pState.ChangeState(MM_PlayerPhaseState.State.Slime);
-
-        // モデルをスライムのやつに変える処理
-        _modelSwitcher.SwitchToModel(_modelSwitcher.slimeModel);
     }
 
 }
