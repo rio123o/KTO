@@ -1,22 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cysharp.Threading.Tasks;
-using System.Threading;
-using System;
 
 // 必要なコンポーネントを強制的にアタッチ
 [RequireComponent(typeof(Collider), typeof(Rigidbody))]
 
 public class RiseGas : MonoBehaviour
 {
-    [SerializeField] private float riseSpeed = 5f;   //  上昇速度
-    [SerializeField] private float moveRightSpeed = 5f;  //  右方向への移動速度
+    [Header("プロペラの風の範囲内でGas状態のプレイヤーの速度の調整")]
+    [Tooltip("上下の速度")]
+    [SerializeField] private float riseSpeed = 100f;   //  上昇速度
+    [Tooltip("左右の速度")]
+    [SerializeField] private float moveRightSpeed = 100f;  //  右方向への移動速度
 
     [SerializeField] private MM_PlayerPhaseState _pState;
 
     //  Gasに影響を与えるアクティブなDirectionのリスト
-    private List<GasDirection> activeDirections = new List<GasDirection>();
+    private readonly List<GasDirection> activeDirections = new();
 
     private new Rigidbody rigidbody;
 
@@ -32,7 +32,7 @@ public class RiseGas : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
     }
@@ -52,11 +52,11 @@ public class RiseGas : MonoBehaviour
 
         if (finalMove == Vector3.zero)
         {
-            rigidbody.velocity = Vector3.zero;
+            //rigidbody.velocity = Vector3.zero;
             return;
         }
 
-        rigidbody.velocity = finalMove;
+        rigidbody.AddForce(finalMove, ForceMode.Acceleration);
 
     }
 

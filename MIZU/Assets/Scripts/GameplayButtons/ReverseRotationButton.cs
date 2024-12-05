@@ -16,7 +16,7 @@ public class ReverseRotationButton : RepressableButton
         }
 
         //  Œ»İ‚Ì‰ñ“]•ûŒü‚ğ”½“]‚·‚é
-        int newDirection = rotateObject.RotateDirection == 1 ? -1 : 1;
+        int newDirection = -rotateObject.RotateDirection;
         rotateObject.SetRotationDirection(newDirection);
 
         Debug.Log($"{gameObject.name}: RotateObject‚Ì‰ñ“]•ûŒü‚ğ{(newDirection == 1 ? "³“]" : "‹t‰ñ“]")}‚É•ÏX‚µ‚½B");

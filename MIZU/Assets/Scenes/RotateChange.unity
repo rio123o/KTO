@@ -1525,8 +1525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f88e748e0aed3424e94698d5b8fc562d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  riseSpeed: 5
-  moveRightSpeed: 5
+  riseSpeed: 120
+  moveRightSpeed: 120
   _pState: {fileID: 1511661113}
 --- !u!1001 &1853076296
 PrefabInstance:
@@ -1822,8 +1822,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f88e748e0aed3424e94698d5b8fc562d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  riseSpeed: 5
-  moveRightSpeed: 5
+  riseSpeed: 120
+  moveRightSpeed: 120
   _pState: {fileID: 2098193261}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -46,7 +46,8 @@ public class RotateObject : MonoBehaviour
     {
         if (isRotating)
         {
-           transform.Rotate(new Vector3(0, rotationSpeed * Time.deltaTime, 0));
+            Vector3 rotateVec = rotateDirection * rotationSpeed * Time.deltaTime * Vector3.up;
+           transform.Rotate(rotateVec);
         }
     }
 
