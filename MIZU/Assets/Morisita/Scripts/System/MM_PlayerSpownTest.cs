@@ -43,7 +43,7 @@ public class MM_PlayerSpownTest : MonoBehaviour
     }
     void Update()
     {
-        if (observerBool.OnBoolTrueChange)
+        if (observerBool.OnBoolTrueChange(isRespown))
         {
             DeathAllPlayer(testPlayerScripts);
             print("allspown");
@@ -55,8 +55,6 @@ public class MM_PlayerSpownTest : MonoBehaviour
             CheckPlayerDeath();
 
         }
-
-        observerBool.SetBool(isRespown);
     }
 
     private void Spown(List<GameObject> _player,List<MM_Test_Player> _tplayer)
@@ -116,7 +114,15 @@ public class MM_PlayerSpownTest : MonoBehaviour
     {
         var token = this.GetCancellationTokenOnDestroy();
 
-        await UniTask.Delay(TimeSpan.FromSeconds(spownTime), cancellationToken: token);
+        try
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(spownTime), cancellationToken: token);
+        }
+        catch (OperationCanceledException)
+        {
+            Debug.Log("ÉäÉXÉ|Å[ÉìèàóùÇ…é∏îsÇµÇ‹ÇµÇΩ");
+            return;
+        }
 
         Spown(playerGameObjects,testPlayerScripts);
 

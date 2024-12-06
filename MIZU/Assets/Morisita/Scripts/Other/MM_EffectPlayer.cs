@@ -5,6 +5,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using System;
+using Unity.VisualScripting;
 
 public class MM_EffectPlayer : MonoBehaviour
 {
@@ -13,39 +14,76 @@ public class MM_EffectPlayer : MonoBehaviour
     // エフェクトを出す場所
     protected Transform _particleTransform;
 
-    virtual public void Play(float time)
-    {
-        ParticleInstantiate(_particleTransform,time);
-    }
     virtual public void Play()
     {
-        ParticleInstantiate(_particleTransform);
+        CallParticleInstantiateSetCanceltoken();
+    }
+    virtual public void Play(float time)
+    {
+        CallParticleInstantiateSetCanceltoken(time);
     }
 
-    virtual async public void ParticleInstantiate(Transform tf)
+    virtual protected void CallParticleInstantiateSetCanceltoken()
     {
-        var token = this.GetCancellationTokenOnDestroy();
+        
+        var destroyCt = this.GetCancellationTokenOnDestroy();
+        ParticleInstantiate(_particleTransform, destroyCt);
+
+    }
+    virtual protected void CallParticleInstantiateSetCanceltoken(float time)
+    {
+        var destroyCt = this.GetCancellationTokenOnDestroy();
+        ParticleInstantiate(_particleTransform,time, destroyCt);
+        
+    }
+
+    virtual async protected void ParticleInstantiate(Transform tf,CancellationToken token)
+    {
         ParticleSystem particle = Instantiate(_particle, tf);
 
         float lifetime = particle.main.startLifetimeMultiplier;
         particle.Play();
 
-        await UniTask.Delay(TimeSpan.FromSeconds(lifetime),cancellationToken :token);
+        try
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(lifetime), cancellationToken: token);
 
+        }
+        catch (OperationCanceledException)
+        {
+            Debug.LogError($"アタッチされているオブジェクトがDestroyされました");
+            return;
+        }
+
+        if (token.IsCancellationRequested)
+        {
+            return;
+        }
         Destroy(particle.gameObject);
 
     }
-    virtual async public void ParticleInstantiate(Transform tf, float time)
+    virtual async protected void ParticleInstantiate(Transform tf, float time,CancellationToken token)
     {
-        var token = this.GetCancellationTokenOnDestroy();
         ParticleSystem particle = Instantiate(_particle, tf);
 
         float lifetime = time;
 
         particle.Play();
 
-        await UniTask.Delay(TimeSpan.FromSeconds(lifetime), cancellationToken: token);
+        try
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(lifetime), cancellationToken: token);
 
+        }
+        catch (OperationCanceledException)
+        {
+            Debug.LogError($"アタッチされているオブジェクトがDestroyされました");
+            return;
+        }
+        if (token.IsCancellationRequested)
+        {
+            return;
+        }
         Destroy(particle);
 
     }
