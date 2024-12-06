@@ -9,6 +9,10 @@ public class MM_ObserverBool
     private bool oldBool;
     private bool newBool;
 
+    bool onBoolChange;
+    bool onBoolTrueChange;
+    bool onBoolFalseChange;
+
     private bool _Bool
     {
         set
@@ -18,22 +22,22 @@ public class MM_ObserverBool
 
             if (oldBool == newBool)
             {
-                OnBoolChange = false;
-                OnBoolTrueChange = false;
-                OnBoolTrueChange = false;
+                onBoolChange = false;
+                onBoolTrueChange = false;
+                onBoolFalseChange = false;
             }
             else 
             {
-                OnBoolChange = true;
+                onBoolChange = true;
                 if (newBool)
                 {
-                    OnBoolTrueChange = true;
+                    onBoolTrueChange = true;
                     onBoolFalseChange = false;
                 }
                 else
                 {
-                    OnBoolTrueChange = false;
-                    OnBoolFalseChange = true;
+                    onBoolTrueChange = false;
+                    onBoolFalseChange = true;
                 }
             }
 
@@ -42,29 +46,28 @@ public class MM_ObserverBool
     public MM_ObserverBool() { }
     public MM_ObserverBool(bool inBool)
     {
-        _Bool = inBool;
+              SetBool(inBool);
     }
     public void SetBool(bool inBool)
     {
         _Bool=inBool;
     }
-    bool onBoolChange;
-    bool onBoolTrueChange;
-    bool onBoolFalseChange;
-    public bool OnBoolChange
+
+    public bool OnBoolChange(bool inBool)
     {
-        get => onBoolChange;
-        private set { onBoolChange = value; }
+        SetBool(inBool);
+        return onBoolChange;
     }
-    public bool OnBoolTrueChange
+    public bool OnBoolTrueChange(bool inBool)
     {
-        get => onBoolTrueChange;
-        private set { onBoolTrueChange = value; }
+        SetBool(inBool);
+
+        return onBoolTrueChange;
     }
-    public bool OnBoolFalseChange
+    public bool OnBoolFalseChange(bool inBool)
     {
-        get => onBoolFalseChange;
-        private set { onBoolFalseChange = value; }
+        SetBool(inBool);
+        return onBoolFalseChange;
     }
 }
 

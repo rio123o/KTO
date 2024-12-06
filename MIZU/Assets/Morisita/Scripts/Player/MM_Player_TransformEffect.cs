@@ -20,16 +20,4 @@ public class MM_Player_TransformEffect : MM_EffectPlayer
         }
         oldState = pState.GetState();
     }
-
-
-    public override void Play()
-    {
-        ParticleInstantiate(_particleTransform);
-    }
-    public override void Play(float time)
-    {
-        ParticleInstantiate(_particleTransform, time);
-    }
-
-
 }
