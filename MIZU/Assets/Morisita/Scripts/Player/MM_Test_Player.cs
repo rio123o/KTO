@@ -57,6 +57,11 @@ public class MM_Test_Player : MonoBehaviour
 
     private KK_PlayerModelSwitcher _modelSwitcher;
     private MM_Player_State_GameObject_Switcher _gameObjectSwitcher;
+
+    private void OnEnable()
+    {
+        MM_PlayerStateManager.Instance.SetPlayerState(MM_PlayerStateManager.PlayerState.Playing);
+    }
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -94,6 +99,7 @@ public class MM_Test_Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         Gravity();
         GroundCheck();
         Move();
@@ -171,7 +177,6 @@ public class MM_Test_Player : MonoBehaviour
             case MM_PlayerPhaseState.State.Liquid: PlayerLiquidStateUpdateFunc(); break;
             default: Debug.LogError($"エラー、プレイヤーのステートが{_playerPhaseState.GetState()}になっています"); break;
         }
-        MM_PlayerStateManager.Instance.SetPlayerState(MM_PlayerStateManager.PlayerState.Playing);
 
     }
 

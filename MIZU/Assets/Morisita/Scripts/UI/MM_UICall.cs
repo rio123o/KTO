@@ -22,12 +22,12 @@ public class MM_UICall : MonoBehaviour
         if (createdUI==null)
         {
             SetUI();
-            MM_TimeManager.Instance.StopTime();
+            MM_PlayerStateManager.Instance.SetPlayerState(MM_PlayerStateManager.PlayerState.Pause);
         }
         else
         {
             Destroy(createdUI);
-            MM_TimeManager.Instance.MoveTime();
+            MM_PlayerStateManager.Instance.SetPlayerState(MM_PlayerStateManager.PlayerState.Playing);
         }
     }
 
