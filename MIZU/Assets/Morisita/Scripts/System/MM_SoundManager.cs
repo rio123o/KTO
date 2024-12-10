@@ -2,11 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(AudioSource))]
-public class MM_SoundManager : MonoBehaviour
+public class MM_SoundManager : MM_SingletonMonoBehaviour<MM_SoundManager>
 {
-    private static MM_SoundManager _instance;
-    public static MM_SoundManager Instance { get { return _instance; } }
-
     public float masterVolume = 1f;
     public float seVolume = 1f;
     public float bgmVolume = 1f;
@@ -34,16 +31,6 @@ public class MM_SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-
         bgmSource = GetComponent<AudioSource>();
         bgmSource.loop = true;
 

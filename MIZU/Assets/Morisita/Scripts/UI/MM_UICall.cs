@@ -22,12 +22,12 @@ public class MM_UICall : MonoBehaviour
         if (createdUI==null)
         {
             SetUI();
-            MM_TimeManager.instance.StopTime();
+            MM_TimeManager.Instance.StopTime();
         }
         else
         {
             Destroy(createdUI);
-            MM_TimeManager.instance.MoveTime();
+            MM_TimeManager.Instance.MoveTime();
         }
     }
 

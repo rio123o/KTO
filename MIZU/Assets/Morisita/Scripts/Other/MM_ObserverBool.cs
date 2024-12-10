@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
-using UnityEngine;
-
 public class MM_ObserverBool
 {
 
@@ -53,17 +48,34 @@ public class MM_ObserverBool
         _Bool=inBool;
     }
 
+    /// <summary>
+    /// Bool‚ª•Ï‚í‚Á‚½uŠÔ‚ğ•Ô‚·
+    /// </summary>
+    /// <param name="inBool"></param>
+    /// <returns></returns>
     public bool OnBoolChange(bool inBool)
     {
         SetBool(inBool);
         return onBoolChange;
     }
+
+    /// <summary>
+    /// Bool‚ªTrue‚É•Ï‚í‚Á‚½uŠÔ‚ğ•Ô‚·
+    /// </summary>
+    /// <param name="inBool"></param>
+    /// <returns></returns>
     public bool OnBoolTrueChange(bool inBool)
     {
         SetBool(inBool);
 
         return onBoolTrueChange;
     }
+
+    /// <summary>
+    /// Bool‚ªFalse‚É•Ï‚í‚Á‚½uŠÔ‚ğ•Ô‚·
+    /// </summary>
+    /// <param name="inBool"></param>
+    /// <returns></returns>
     public bool OnBoolFalseChange(bool inBool)
     {
         SetBool(inBool);
