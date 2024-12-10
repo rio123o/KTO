@@ -1327,12 +1327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8de05512f70c984c98cec1441fcd501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputSettings:
-    m_Name: Input Settings
-    m_Id: af6fac7b-0c53-4429-90d5-52926ce099e3
-    m_Asset: {fileID: 0}
-    m_Actions: []
-    m_Bindings: []
+  inputSettings: {fileID: -944628639613478452, guid: 532e93d6bda4aee43aa51a3351b55294, type: 3}
 --- !u!4 &1435540938
 Transform:
   m_ObjectHideFlags: 0
@@ -2172,6 +2167,22 @@ PrefabInstance:
       propertyPath: instantiateUI
       value: 
       objectReference: {fileID: 1792601820}
+    - target: {fileID: 1100850739098370403, guid: 4097a4336e7b88d419e4057ffd1f946c, type: 3}
+      propertyPath: playerPauseInputAction.m_SingletonActionBindings.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100850739098370403, guid: 4097a4336e7b88d419e4057ffd1f946c, type: 3}
+      propertyPath: playerPauseInputAction.m_SingletonActionBindings.Array.data[2].m_Id
+      value: 4f2af23e-20bd-4ceb-ad29-6d43a53fbc5f
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100850739098370403, guid: 4097a4336e7b88d419e4057ffd1f946c, type: 3}
+      propertyPath: playerPauseInputAction.m_SingletonActionBindings.Array.data[2].m_Path
+      value: <HID::ZhiXu CYBER GYRO CONTROLLER for SWITCH>/button10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100850739098370403, guid: 4097a4336e7b88d419e4057ffd1f946c, type: 3}
+      propertyPath: playerPauseInputAction.m_SingletonActionBindings.Array.data[2].m_Action
+      value: Player Pause Input
+      objectReference: {fileID: 0}
     - target: {fileID: 4302331655222065556, guid: 4097a4336e7b88d419e4057ffd1f946c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 960

@@ -13,5 +13,6 @@ public class MM_SetOnClick_PauseButton : MonoBehaviour
     {
         button.onClick.AddListener(MM_TimeManager.Instance.MoveTime);
         button.onClick.AddListener(()=>Destroy(this.gameObject));
+        button.onClick.AddListener(()=>MM_PlayerStateManager.Instance.SetPlayerState(MM_PlayerStateManager.PlayerState.Playing));
     }
 }
