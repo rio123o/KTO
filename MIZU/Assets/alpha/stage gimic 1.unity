@@ -1046,6 +1046,10 @@ PrefabInstance:
       value: PlayerInputManager
       objectReference: {fileID: 0}
     - target: {fileID: 9216990443488314748, guid: 618e3dfedbcf83e4397d904bb0cf933d, type: 3}
+      propertyPath: maxPlayerCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9216990443488314748, guid: 618e3dfedbcf83e4397d904bb0cf933d, type: 3}
       propertyPath: playerSpownPoint
       value: 
       objectReference: {fileID: 1653665033}

@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MM_TimeManager : MonoBehaviour
+public class MM_TimeManager : MM_SingletonMonoBehaviour<MM_TimeManager>
 {
     // Start is called before the first frame update
-    public static MM_TimeManager instance=null;
     [SerializeField]
     private float defaultTimeScale = 1.0f;
     [SerializeField]
@@ -13,18 +12,6 @@ public class MM_TimeManager : MonoBehaviour
     [SerializeField]
     private bool isStopTime;
 
-    private void Awake()
-    {
-        if(instance==null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
     void Start()
     {
         InitTimeScale();
