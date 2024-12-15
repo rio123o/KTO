@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class MM_Add_Velocity_For_With_Moving : MonoBehaviour
@@ -11,7 +12,7 @@ public class MM_Add_Velocity_For_With_Moving : MonoBehaviour
     private Vector3 addVelocity;
 
     string MOVE_GROUND = "MoveGround";
-    
+
     Vector3 oldPosition;
     Rigidbody _rb;
     private void Start()
@@ -24,13 +25,13 @@ public class MM_Add_Velocity_For_With_Moving : MonoBehaviour
         Init();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (isOnMoveGround)
         {
             CalcAddVelocity();
             //_rb.AddForce(addVelocity.normalized * ((addVelocity.x - _rb.velocity.x) * power), ForceMode.Acceleration);
-            _rb.MovePosition(_rb.position+AddVelocity()*Time.deltaTime);
+            _rb.MovePosition(_rb.position + AddVelocity() * Time.deltaTime);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -39,7 +40,14 @@ public class MM_Add_Velocity_For_With_Moving : MonoBehaviour
         {
             print("ê⁄ë±");
             isOnMoveGround = true;
-            otherRigidbody = other.gameObject.GetComponent<MM_Get_Parent_Rigidbody>().rb;
+            if (other.gameObject.GetComponent<MM_Get_Parent_Rigidbody>() != null)
+            {
+                otherRigidbody = other.gameObject.GetComponent<MM_Get_Parent_Rigidbody>().rb;
+            }
+            else 
+            {
+                otherRigidbody = other.gameObject.GetComponent<Rigidbody>();
+            }
             oldPosition = otherRigidbody.position;
         }
     }
@@ -58,13 +66,13 @@ public class MM_Add_Velocity_For_With_Moving : MonoBehaviour
     {
         isOnMoveGround = false;
         addVelocity = Vector3.zero;
-        otherRigidbody=null;
+        otherRigidbody = null;
     }
 
     private void CalcAddVelocity()
     {
         addVelocity = (otherRigidbody.position - oldPosition) / Time.deltaTime;
-        addVelocity = new(addVelocity.x, 0f, 0f);
+        addVelocity = new(addVelocity.x, addVelocity.y, 0f);
         oldPosition = otherRigidbody.position;
     }
 

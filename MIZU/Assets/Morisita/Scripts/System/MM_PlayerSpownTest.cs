@@ -59,6 +59,7 @@ public class MM_PlayerSpownTest : MonoBehaviour
 
     private void Spown(List<GameObject> _player,List<MM_Test_Player> _tplayer)
     {
+
         foreach (var p in _player)
         {
             p.transform.position = playerSpownPoint.position;
@@ -107,6 +108,8 @@ public class MM_PlayerSpownTest : MonoBehaviour
     }
     private void DeathAllPlayer(List<MM_Test_Player> _tplayer)
     {
+        MM_PlayerStateManager.Instance.SetPlayerState(MM_PlayerStateManager.PlayerState.Death);
+
         foreach (var tp in _tplayer)
             tp.Death();
     }
@@ -116,6 +119,8 @@ public class MM_PlayerSpownTest : MonoBehaviour
 
         try
         {
+            MM_PlayerStateManager.Instance.SetPlayerState(MM_PlayerStateManager.PlayerState.Respown);
+
             await UniTask.Delay(TimeSpan.FromSeconds(spownTime), cancellationToken: token);
         }
         catch (OperationCanceledException)
@@ -127,4 +132,6 @@ public class MM_PlayerSpownTest : MonoBehaviour
         Spown(playerGameObjects,testPlayerScripts);
 
     }
+
+    public bool GetIsRespown() {  return isRespown; }
 }

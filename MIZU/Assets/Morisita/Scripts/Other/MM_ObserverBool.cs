@@ -1,73 +1,84 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
-using UnityEngine;
-
-public class MM_ObserverBool
-{
-
-    private bool oldBool;
-    private bool newBool;
-
-    bool onBoolChange;
-    bool onBoolTrueChange;
-    bool onBoolFalseChange;
-
-    private bool _Bool
+    public class MM_ObserverBool
     {
-        set
-        {
-            oldBool = newBool;
-            newBool = value;
 
-            if (oldBool == newBool)
+        private bool oldBool;
+        private bool newBool;
+
+        bool onBoolChange;
+        bool onBoolTrueChange;
+        bool onBoolFalseChange;
+
+        private bool _Bool
+        {
+            set
             {
-                onBoolChange = false;
-                onBoolTrueChange = false;
-                onBoolFalseChange = false;
-            }
-            else 
-            {
-                onBoolChange = true;
-                if (newBool)
+                oldBool = newBool;
+                newBool = value;
+
+                if (oldBool == newBool)
                 {
-                    onBoolTrueChange = true;
+                    onBoolChange = false;
+                    onBoolTrueChange = false;
                     onBoolFalseChange = false;
                 }
                 else
                 {
-                    onBoolTrueChange = false;
-                    onBoolFalseChange = true;
+                    onBoolChange = true;
+                    if (newBool)
+                    {
+                        onBoolTrueChange = true;
+                        onBoolFalseChange = false;
+                    }
+                    else
+                    {
+                        onBoolTrueChange = false;
+                        onBoolFalseChange = true;
+                    }
                 }
-            }
 
+            }
+        }
+        public MM_ObserverBool() { }
+        public MM_ObserverBool(bool inBool)
+        {
+            SetBool(inBool);
+        }
+        public void SetBool(bool inBool)
+        {
+            _Bool = inBool;
+        }
+
+        /// <summary>
+        /// BoolÇ™ïœÇÌÇ¡ÇΩèuä‘Çï‘Ç∑
+        /// </summary>
+        /// <param name="inBool"></param>
+        /// <returns></returns>
+        public bool OnBoolChange(bool inBool)
+        {
+            SetBool(inBool);
+            return onBoolChange;
+        }
+
+        /// <summary>
+        /// BoolÇ™TrueÇ…ïœÇÌÇ¡ÇΩèuä‘Çï‘Ç∑
+        /// </summary>
+        /// <param name="inBool"></param>
+        /// <returns></returns>
+        public bool OnBoolTrueChange(bool inBool)
+        {
+            SetBool(inBool);
+
+            return onBoolTrueChange;
+        }
+
+        /// <summary>
+        /// BoolÇ™FalseÇ…ïœÇÌÇ¡ÇΩèuä‘Çï‘Ç∑
+        /// </summary>
+        /// <param name="inBool"></param>
+        /// <returns></returns>
+        public bool OnBoolFalseChange(bool inBool)
+        {
+            SetBool(inBool);
+            return onBoolFalseChange;
         }
     }
-    public MM_ObserverBool() { }
-    public MM_ObserverBool(bool inBool)
-    {
-              SetBool(inBool);
-    }
-    public void SetBool(bool inBool)
-    {
-        _Bool=inBool;
-    }
-
-    public bool OnBoolChange(bool inBool)
-    {
-        SetBool(inBool);
-        return onBoolChange;
-    }
-    public bool OnBoolTrueChange(bool inBool)
-    {
-        SetBool(inBool);
-
-        return onBoolTrueChange;
-    }
-    public bool OnBoolFalseChange(bool inBool)
-    {
-        SetBool(inBool);
-        return onBoolFalseChange;
-    }
-}
-
