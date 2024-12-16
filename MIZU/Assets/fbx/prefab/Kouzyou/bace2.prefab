@@ -60,6 +60,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7235015103121818086, guid: e9c7686e9ba624947bad26763f2e0d42, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: -2615453208677245630, guid: e9c7686e9ba624947bad26763f2e0d42, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: -8140499575222096, guid: e9c7686e9ba624947bad26763f2e0d42, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e9c7686e9ba624947bad26763f2e0d42, type: 3}
       propertyPath: m_Name
       value: bace2
