@@ -10,7 +10,14 @@ public class WaterControl : MonoBehaviour
 
     private bool isMoving = false; // 現在移動中かどうか
     private Vector3 targetPosition; // 水の目標位置
+    private Vector3 initialPosition;//初期位置
+    [SerializeField]
+    private MM_PlayerSpownTest _spowntest;
 
+    private void Start()
+    {
+        initialPosition = water.transform.position;
+    }
     void Update()
     {
         if (isMoving)
@@ -28,6 +35,11 @@ public class WaterControl : MonoBehaviour
                 isMoving = false;
             }
         }
+
+        if (_spowntest.IsRespown)
+        {
+            ResetWater();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,5 +56,12 @@ public class WaterControl : MonoBehaviour
             // コライダーを一時的に無効化
             this.GetComponent<Collider>().enabled = false;
         }
+    }
+
+    public void ResetWater()
+    {
+        water.transform.position = initialPosition;
+        isMoving = false;
+        this.GetComponent<Collider>().enabled = true; // コライダーを再度有効化
     }
 }
