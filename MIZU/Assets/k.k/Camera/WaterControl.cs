@@ -13,9 +13,10 @@ public class WaterControl : MonoBehaviour
     private Vector3 initialPosition;//èâä˙à íu
     [SerializeField]
     private MM_PlayerSpownTest _spowntest;
-
+    MM_ObserverBool _observer;
     private void Start()
     {
+        _observer = new MM_ObserverBool();
         initialPosition = water.transform.position;
     }
     void Update()
@@ -36,7 +37,7 @@ public class WaterControl : MonoBehaviour
             }
         }
 
-        if (_spowntest.IsRespown)
+        if (_observer.OnBoolTrueChange(_spowntest.GetIsRespown()))
         {
             ResetWater();
         }
