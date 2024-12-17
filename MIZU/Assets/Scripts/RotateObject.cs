@@ -5,34 +5,34 @@ using UnityEngine;
 
 public class RotateObject : MonoBehaviour
 {
-    [Header("1秒で何度回転するか")]
+    [Header("1?????????")]
     [SerializeField] private float rotationSpeed = 90f;
-    [Header("ゲーム開始時に自動で回転を始めるようにするか")]
+    [Header("??????????????????????")]
     [SerializeField] private bool autoRotating = false;
 
-    //  回転方向について 1が通常、-1が逆回転
+    //  ???????? 1????-1????
     private int rotateDirection = 1;
 
-    private bool isRotating = false;  //  回転のフラグ
+    private bool isRotating = false;  //  ??????
 
-    //  回転状態が変化した際に通知するためのイベントの宣言
+    //  ?????????????????????????
     public event Action<RotateObject, bool> RotatingChange;
 
-    //  現在の回転方向を外から取得可能にする
+    //  ??????????????????
     public int RotateDirection => rotateDirection;
 
-    //  オブジェクトが現在回転中かどうかを外から取得可能にする
+    //  ???????????????????????????
     public bool IsRotating => isRotating;
 
     void Start()
     {
-        if(autoRotating)
+        if (autoRotating)
         {
             StartRotation();
         }
     }
 
-    //  回転を開始するメソッド
+    //  ???????????
     public void StartRotation()
     {
         if (isRotating) return;
@@ -47,16 +47,16 @@ public class RotateObject : MonoBehaviour
         if (isRotating)
         {
             Vector3 rotateVec = rotateDirection * rotationSpeed * Time.deltaTime * Vector3.up;
-           transform.Rotate(rotateVec);
+            transform.Rotate(rotateVec);
         }
     }
 
-    //  回転方向を設定する
+    //  ?????????
     public void SetRotationDirection(int direction)
     {
         if (direction != 1 && direction != -1)
         {
-            Debug.LogError("回転方向は(通常回転)か-1(逆回転のみ設定可能。");
+            Debug.LogError("?????(????)?-1(??????????");
             return;
         }
 
