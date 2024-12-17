@@ -12,13 +12,9 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
-        SceneManager.LoadScene("selectedScene");
+        SceneManager.LoadScene("stage gimic 1");
     }
 
-    public void GoToStage1()
-    {
-        SceneManager.LoadScene("stage gimic");
-    }
 
     public void RetrunTitle()
     {

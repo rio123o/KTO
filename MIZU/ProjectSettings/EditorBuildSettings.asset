@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/main/titleScene.unity
     guid: 9145d29d6df853e4dac43af88d32414e
   - enabled: 1
-    path: Assets/Scenes/main/stage gimic.unity
-    guid: 7ccedfef9c30d7349aec04514c265130
+    path: Assets/alpha/stage 1.unity
+    guid: 765ae823337b8b64bbb13a54e3818fdd
   - enabled: 1
     path: Assets/Scenes/main/goalScene.unity
     guid: dfbeb16c155c61b4bb772290eef7e483
