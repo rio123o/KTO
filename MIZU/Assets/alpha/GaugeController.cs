@@ -24,9 +24,14 @@ public class GaugeController : MonoBehaviour
     public float cloud = 1;
     public float slime = 1;
 
+    bool isOnGround = false;
+    bool isOnWater = false;
     //private bool isDead = false;
 
     private List<string> allowedTags = new List<string> { "HealSpot", "Ground" };
+
+    [SerializeField]
+    private MM_GroundCheck _groundCheck;
 
     void Start()
     {
@@ -36,6 +41,14 @@ public class GaugeController : MonoBehaviour
 
         player1Object = _modeManager.Player1;
         player2Object = _modeManager.Player2;
+
+        if (_groundCheck == null)
+            Debug.LogWarning($"{nameof(_groundCheck)}がアタッチされていません");
+    }
+
+    private void FixedUpdate()
+    {
+        GroundCheck();
     }
 
     void Update()
@@ -54,7 +67,8 @@ public class GaugeController : MonoBehaviour
                 // プレイヤー1がヒールスポットに衝突したかチェック
                 foreach (Collider col in _collisionManager.GetPlayer1HitColliders())
                 {
-                    if (allowedTags.Contains(col.gameObject.tag))
+                    if (isOnGround || isOnWater)
+                    //if(allowedTags.Contains(col.gameObject.tag))
                     {
                         Heal(100f);  // プレイヤー1の回復量
                         break;
@@ -66,8 +80,9 @@ public class GaugeController : MonoBehaviour
                 // プレイヤー2がヒールスポットに衝突したかチェック
                 foreach (Collider col in _collisionManager.GetPlayer2HitColliders())
                 {
-                    if (allowedTags.Contains(col.gameObject.tag))
-                    {
+                    if (isOnGround || isOnWater)
+                    //if(allowedTags.Contains(col.gameObject.tag))
+                {
                         Heal(100f);  // プレイヤー2の回復量
                         break;
                     }
@@ -75,6 +90,12 @@ public class GaugeController : MonoBehaviour
             }
         }
     //}
+
+    private void GroundCheck()
+    {
+        isOnGround = _groundCheck.IsGround();
+        isOnWater = _groundCheck.IsPuddle();
+    }
 
     public void BeInjured(float attack, string modelTag)
     {
