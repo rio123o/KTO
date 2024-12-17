@@ -33,7 +33,6 @@ public class MM_PlayerSpownTest : MonoBehaviour
     // Œ»Ý‚ÌƒvƒŒƒCƒ„[”
     private int currentPlayerCount = 0;
     bool isRespown = false;
-    public bool IsRespown => isRespown;
 
     MM_ObserverBool observerBool;
 
