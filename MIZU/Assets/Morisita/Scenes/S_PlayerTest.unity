@@ -2173,11 +2173,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1100850739098370403, guid: 4097a4336e7b88d419e4057ffd1f946c, type: 3}
       propertyPath: playerPauseInputAction.m_SingletonActionBindings.Array.data[2].m_Id
-      value: 4f2af23e-20bd-4ceb-ad29-6d43a53fbc5f
+      value: d5f6fcfa-0ef9-4fb1-b360-7b735881f537
       objectReference: {fileID: 0}
     - target: {fileID: 1100850739098370403, guid: 4097a4336e7b88d419e4057ffd1f946c, type: 3}
       propertyPath: playerPauseInputAction.m_SingletonActionBindings.Array.data[2].m_Path
-      value: <HID::ZhiXu CYBER GYRO CONTROLLER for SWITCH>/button10
+      value: <Gamepad>/start
       objectReference: {fileID: 0}
     - target: {fileID: 1100850739098370403, guid: 4097a4336e7b88d419e4057ffd1f946c, type: 3}
       propertyPath: playerPauseInputAction.m_SingletonActionBindings.Array.data[2].m_Action

@@ -142,7 +142,8 @@ public class MM_Fall_Platform : MonoBehaviour
         if (other.gameObject.CompareTag("puddle"))
         {
             print("hureta");
-            SetActiveFalseFallPlatform();
+
+            //SetActiveFalseFallPlatform();
 
             isFall = false;
         }
