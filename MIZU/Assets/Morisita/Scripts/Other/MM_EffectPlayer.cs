@@ -59,7 +59,7 @@ public class MM_EffectPlayer : MonoBehaviour
         {
             return;
         }
-        Destroy(particle.gameObject);
+        //Destroy(particle.gameObject);
 
     }
     virtual async protected void ParticleInstantiate(Transform tf, float time,CancellationToken token)
