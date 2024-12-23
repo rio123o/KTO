@@ -6,31 +6,26 @@ public class MoveFloor : MonoBehaviour
 {
     public enum MoveMode
     {
-        Vertical,   // 直線追従
-        Horizontal  // ジグザグ追従
+        Vertical,    // 直線追従
+        Horizontal   // ジグザグ追従
     }
 
     public MoveMode moveMode = MoveMode.Vertical; // 現在の追従モード
     public float speed = 3f;                      // 移動速度
 
-    public Vector3 startPoint; // 床の開始位置
-    public Vector3 endPoint;   // 床の終了位置
+    public Vector3 relativeEndPoint = new Vector3(0, 5, 0); // 開始位置からの相対座標
+    private Vector3 startPoint;   // 床の開始位置
+    private Vector3 endPoint;     // 床の終了位置
 
     private bool movingToEnd = true;
 
     public void Start()
     {
-        // Inspectorで値が設定されていない場合、現在位置を開始位置に設定
-        if (startPoint == Vector3.zero)
-        {
-            startPoint = transform.position;
-        }
+        // 現在地を開始位置として設定
+        startPoint = transform.position;
 
-        // InspectorでendPointが設定されていない場合、適当なデフォルト値を設定
-        if (endPoint == Vector3.zero)
-        {
-            endPoint = startPoint + new Vector3(0, 5f, 0); // 上方向に5ユニット移動するデフォルト設定
-        }
+        // 終了位置を相対的に計算
+        endPoint = startPoint + relativeEndPoint;
     }
 
     public void Update()
@@ -72,9 +67,9 @@ public class MoveFloor : MonoBehaviour
         }
     }
 
-    // ジグザグ追従の処理（未実装）
     private void HorizontalFollow()
     {
-        // 必要に応じて実装
+        // 水平方向の追従処理をここに実装
+        // 必要に応じてパターンを変更
     }
 }
