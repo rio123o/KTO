@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
-        SceneManager.LoadScene("stage gimic 1");
+        SceneManager.LoadScene("main Scene");
     }
 
 
