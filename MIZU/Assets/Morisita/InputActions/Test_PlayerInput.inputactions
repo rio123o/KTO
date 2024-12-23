@@ -58,15 +58,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "DisplaySolidModeChangeUI",
-                    "type": "Button",
-                    "id": "2981ebf7-3e17-4350-8211-c2fa4b2c3ae2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -353,50 +344,6 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "StateChage_Liquid",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d4d2af90-dbe1-4d3c-af30-efef3420a17a",
-                    "path": "<XInputController>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "DisplaySolidModeChangeUI",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0b8e59f5-98c2-47b3-a65f-c0884747ea9c",
-                    "path": "<XInputController>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "DisplaySolidModeChangeUI",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2db23082-a681-4c73-9402-24e9efc09909",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "DisplaySolidModeChangeUI",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fed58969-f7a2-4e2f-b2c0-480159faee03",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "DisplaySolidModeChangeUI",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

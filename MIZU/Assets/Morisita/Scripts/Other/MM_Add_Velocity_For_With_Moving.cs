@@ -44,7 +44,7 @@ public class MM_Add_Velocity_For_With_Moving : MonoBehaviour
             {
                 otherRigidbody = other.gameObject.GetComponent<MM_Get_Parent_Rigidbody>().rb;
             }
-            else 
+            else
             {
                 otherRigidbody = other.gameObject.GetComponent<Rigidbody>();
             }
@@ -72,7 +72,10 @@ public class MM_Add_Velocity_For_With_Moving : MonoBehaviour
     private void CalcAddVelocity()
     {
         addVelocity = (otherRigidbody.position - oldPosition) / Time.deltaTime;
-        addVelocity = new(addVelocity.x, addVelocity.y, 0f);
+        if (addVelocity.y < 0)
+            addVelocity = new(addVelocity.x, addVelocity.y, 0f);
+        else
+            addVelocity = new(addVelocity.x, 0f, 0f);
         oldPosition = otherRigidbody.position;
     }
 

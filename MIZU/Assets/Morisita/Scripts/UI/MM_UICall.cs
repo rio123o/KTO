@@ -30,7 +30,11 @@ public class MM_UICall : MonoBehaviour
             MM_PlayerStateManager.Instance.SetPlayerState(MM_PlayerStateManager.PlayerState.Playing);
         }
     }
-
+    private void OnDestroy()
+    {
+        playerPauseInputAction.performed -= CreateUI;
+        playerPauseInputAction.Enable();
+    }
     void SetUI()
     {
        createdUI = instantiateUI.CreateUI();
