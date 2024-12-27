@@ -26,6 +26,8 @@ public class MM_Fall_Platform : MonoBehaviour
     bool isRespown = false;
     [SerializeField]
     bool isRunFall = false;
+    [SerializeField]
+    bool isFinished = false;
 
     Vector3 _fallSpeed;
 
@@ -58,6 +60,7 @@ public class MM_Fall_Platform : MonoBehaviour
     }
     void CheckPlayerRideOnFloor()
     {
+        if (isFinished) return;
         if (observerBool_isTrigger.OnBoolTrueChange(pTrigger.GetIsTrigger()) && !isRunFall)
         {
             print("do");
@@ -135,6 +138,7 @@ public class MM_Fall_Platform : MonoBehaviour
         isFall = false;
         isRespown = false;
         isRunFall = false;
+        isFinished = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -145,6 +149,7 @@ public class MM_Fall_Platform : MonoBehaviour
 
             //SetActiveFalseFallPlatform();
 
+            isFinished = true;
             isFall = false;
         }
     }
