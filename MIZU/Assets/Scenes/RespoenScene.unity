@@ -1921,6 +1921,24 @@ MonoBehaviour:
   playerTrigger: {fileID: 1021008230}
   animator: {fileID: 424851953}
   triggerName: Move Trigger
+--- !u!114 &424851955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424851951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58cd537d51779db40921dfa7eaa74559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask: {fileID: 424851954}
+  player1EyesObject: {fileID: 780235933}
+  player2EyesObject: {fileID: 1320766647}
+  player1EyesOpenBlendShapeIndex: 0
+  player2EyesOpenBlendShapeIndex: 0
+  openWeight: 10
 --- !u!1 &431420950
 GameObject:
   m_ObjectHideFlags: 0
@@ -3816,6 +3834,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2273303181552333085, guid: ec941c67155239a43a7385585fd9ca12, type: 3}
   m_PrefabInstance: {fileID: 495870082}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &780235933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
+  m_PrefabInstance: {fileID: 1812717628}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &987978643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4961,6 +4984,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 824509fe9971a7c4aac84a2c709b759e, type: 3}
+--- !u!1 &1320766647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6562889748348933850, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
+  m_PrefabInstance: {fileID: 1812717628}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1323916038
 GameObject:
   m_ObjectHideFlags: 0
@@ -6156,27 +6184,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.15
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.15
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.5
+      value: -2.13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.8
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6238,6 +6266,14 @@ PrefabInstance:
       propertyPath: m_AABB.m_Extent.z
       value: 8.09911
       objectReference: {fileID: 0}
+    - target: {fileID: -8674276122664378910, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8674276122664378910, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: -1578444296140453417, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
       propertyPath: m_DirtyAABB
       value: 0
@@ -6266,6 +6302,14 @@ PrefabInstance:
       propertyPath: m_AABB.m_Extent.z
       value: 3.3648624
       objectReference: {fileID: 0}
+    - target: {fileID: -1578444296140453417, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1578444296140453417, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
       propertyPath: m_Name
       value: brighting_eyes
@@ -6281,6 +6325,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
       insertIndex: -1
       addedObject: {fileID: 424851954}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 424851955}
   m_SourcePrefab: {fileID: 100100000, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
 --- !u!1 &1818105487 stripped
 GameObject:
