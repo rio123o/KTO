@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks.Triggers;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WaterControl : MonoBehaviour
@@ -14,10 +16,21 @@ public class WaterControl : MonoBehaviour
     [SerializeField]
     private MM_PlayerSpownTest _spowntest;
     MM_ObserverBool _observer;
+
+    public GameObject buttonTop;  // 押される部分のオブジェクト
+    private Material buttonMaterial; // ボタン上部のマテリアル
+    public Material pressedMaterial;  // 押されたときの色
+    public float pressOffset = 0.01f;   // ボタンが下がる距離
+
+    private Vector3 initialbuttonPosition;  // ボタン上部の初期位置
+   
     private void Start()
     {
         _observer = new MM_ObserverBool();
         initialPosition = water.transform.position;
+        
+        initialbuttonPosition = buttonTop.transform.localPosition;
+        buttonMaterial = buttonTop.GetComponent<Renderer>().material;
     }
     void Update()
     {
@@ -57,6 +70,16 @@ public class WaterControl : MonoBehaviour
             // コライダーを一時的に無効化
             this.GetComponent<Collider>().enabled = false;
         }
+     
+        // ボタン上部を下げる
+        buttonTop.transform.localPosition = new Vector3(
+            initialbuttonPosition.x,
+            initialbuttonPosition.y - pressOffset,
+            initialbuttonPosition.z
+        );
+
+        // 色を変更
+        buttonTop.GetComponent<Renderer>().material = pressedMaterial;
     }
 
     public void ResetWater()
@@ -64,5 +87,11 @@ public class WaterControl : MonoBehaviour
         water.transform.position = initialPosition;
         isMoving = false;
         this.GetComponent<Collider>().enabled = true; // コライダーを再度有効化
+
+       
+        buttonTop.transform.localPosition = initialbuttonPosition;                                    
+        // 色を初期状態に戻す
+        buttonTop.GetComponent<Renderer>().material = buttonMaterial;
+
     }
 }

@@ -19,7 +19,7 @@ public class MM_PauseState : MonoBehaviour
         if (observerBool.OnBoolTrueChange(isPause))
             OnPause();
         MM_TimeManager.Instance.StopTime();
-        MM_PlayerControllerManager.Instance.SetControlUIMap();
+        //MM_PlayerControllerManager.Instance.SetControlUIMap();
 
     }
 
@@ -29,7 +29,7 @@ public class MM_PauseState : MonoBehaviour
         if (observerBool.OnBoolFalseChange(isPause))
             OffPause();
         MM_TimeManager.Instance.MoveTime();
-        MM_PlayerControllerManager.Instance.SetControlPlayerMap();
+        //MM_PlayerControllerManager.Instance.SetControlPlayerMap();
 
     }
 }
