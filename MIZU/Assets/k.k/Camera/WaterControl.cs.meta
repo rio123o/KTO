@@ -3,7 +3,11 @@ guid: e0ce12cb2fbb5cf459eeee741d26783d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - water: {instanceID: 0}
+  - _spowntest: {instanceID: 0}
+  - buttonTop: {fileID: 8630741781315338496, guid: 6a15e3040ccd97f41814a72bc163f9c2, type: 3}
+  - pressedMaterial: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
