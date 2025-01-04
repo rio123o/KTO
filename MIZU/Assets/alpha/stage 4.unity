@@ -3278,6 +3278,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1314371166}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &160566992 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 1810227473}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &161256370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5704,6 +5709,9 @@ MonoBehaviour:
   moveSpeed: 3
   isAscending: 1
   _spowntest: {fileID: 2083133941}
+  buttonTop: {fileID: 391060099}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
+  pressOffset: 0.01
 --- !u!65 &323416379
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6774,6 +6782,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 476644658302138665, guid: 315a90d66ad37374e99ccc8766aae046, type: 3}
   m_PrefabInstance: {fileID: 388649762}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &391060099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 254615267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &391592055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6861,6 +6874,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 87329617188337054, guid: 925c12385911c844d86a6d2b685b8520, type: 3}
   m_PrefabInstance: {fileID: 811731042}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &399389048 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 1252730944}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &402157067
 PrefabInstance:
@@ -9248,6 +9266,9 @@ MonoBehaviour:
   moveSpeed: 2
   isAscending: 1
   _spowntest: {fileID: 2083133941}
+  buttonTop: {fileID: 1389406287}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
+  pressOffset: 0.01
 --- !u!65 &558195305
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9373,6 +9394,9 @@ MonoBehaviour:
   moveSpeed: 5
   isAscending: 0
   _spowntest: {fileID: 2083133941}
+  buttonTop: {fileID: 1056651212}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
+  pressOffset: 0.01
 --- !u!65 &560345065
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17771,6 +17795,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d997716146a34be42823f3a3f86d7085, type: 3}
+--- !u!1 &1056651212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 7639937}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1057507031
 GameObject:
   m_ObjectHideFlags: 0
@@ -19135,6 +19164,9 @@ MonoBehaviour:
   moveSpeed: 0
   isAscending: 1
   _spowntest: {fileID: 2083133941}
+  buttonTop: {fileID: 160566992}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
+  pressOffset: 0.01
 --- !u!65 &1157287817
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22855,7 +22887,7 @@ Transform:
   m_GameObject: {fileID: 1377936943}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.333332, y: 10.264101, z: -30}
+  m_LocalPosition: {x: -31.333332, y: 10.5293255, z: -32.2969}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23086,6 +23118,11 @@ RectTransform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4509422966248308025, guid: cd8140e976221dc4ea3e880e2faab9a7, type: 3}
   m_PrefabInstance: {fileID: 1327790694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1389406287 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 1913814335}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1392059213
 PrefabInstance:
@@ -23345,6 +23382,9 @@ MonoBehaviour:
   moveSpeed: 3
   isAscending: 1
   _spowntest: {fileID: 2083133941}
+  buttonTop: {fileID: 399389048}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
+  pressOffset: 0.01
 --- !u!65 &1405321702
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24784,6 +24824,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 476644658302138665, guid: 315a90d66ad37374e99ccc8766aae046, type: 3}
   m_PrefabInstance: {fileID: 25590203}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1515466147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 872656155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1516170221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25925,6 +25970,9 @@ MonoBehaviour:
   moveSpeed: 2
   isAscending: 0
   _spowntest: {fileID: 2083133941}
+  buttonTop: {fileID: 1783465164}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
+  pressOffset: 0.01
 --- !u!65 &1609625932
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28485,6 +28533,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 925c12385911c844d86a6d2b685b8520, type: 3}
+--- !u!1 &1783465164 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 1322839093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1785441189 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2908183001109367283, guid: 618e3dfedbcf83e4397d904bb0cf933d, type: 3}
@@ -29341,7 +29394,7 @@ Transform:
   m_GameObject: {fileID: 1893302709}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.333332, y: 10.264101, z: -30}
+  m_LocalPosition: {x: -31.333332, y: 10.5293255, z: -32.2969}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -31413,6 +31466,9 @@ MonoBehaviour:
   moveSpeed: 3
   isAscending: 1
   _spowntest: {fileID: 2083133941}
+  buttonTop: {fileID: 1515466147}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
+  pressOffset: 0.01
 --- !u!65 &2032092394
 BoxCollider:
   m_ObjectHideFlags: 0
