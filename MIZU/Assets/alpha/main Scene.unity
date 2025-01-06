@@ -1598,6 +1598,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4509422966248308025, guid: cd8140e976221dc4ea3e880e2faab9a7, type: 3}
   m_PrefabInstance: {fileID: 57239986}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &61141483 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 1284752008}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &61202653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5505,6 +5510,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 476644658302138665, guid: 315a90d66ad37374e99ccc8766aae046, type: 3}
   m_PrefabInstance: {fileID: 191240877}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &194991466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 1899804919}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &197336254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9140,8 +9150,8 @@ MonoBehaviour:
   moveSpeed: 3
   isAscending: 1
   _spowntest: {fileID: 2083133941}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
+  buttonTop: {fileID: 345575384}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
   pressOffset: 0.01
 --- !u!65 &323416379
 BoxCollider:
@@ -9243,11 +9253,12 @@ Transform:
   m_GameObject: {fileID: 327406845}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.022856794, y: 0.009142849, z: -0.00085716246}
-  m_LocalScale: {x: 0.014285714, y: 0.014285714, z: 0.014285714}
+  m_LocalPosition: {x: -8.299927, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2069264481}
+  m_Children:
+  - {fileID: 2069264481}
+  m_Father: {fileID: 1354344804}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &327406847
 MonoBehaviour:
@@ -9267,8 +9278,8 @@ MonoBehaviour:
   moveSpeed: 3
   isAscending: 1
   _spowntest: {fileID: 2083133941}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
+  buttonTop: {fileID: 877026344}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
   pressOffset: 0.01
 --- !u!65 &327406848
 BoxCollider:
@@ -9761,6 +9772,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4509422966248308025, guid: cd8140e976221dc4ea3e880e2faab9a7, type: 3}
   m_PrefabInstance: {fileID: 345418034}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &345575384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 254615267}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &346191463 stripped
 Transform:
@@ -13630,8 +13646,8 @@ MonoBehaviour:
   moveSpeed: 5
   isAscending: 0
   _spowntest: {fileID: 2083133941}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
+  buttonTop: {fileID: 1134175352}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
   pressOffset: 0.01
 --- !u!65 &560345065
 BoxCollider:
@@ -14602,8 +14618,8 @@ MonoBehaviour:
   moveSpeed: 3
   isAscending: 1
   _spowntest: {fileID: 2083133941}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
+  buttonTop: {fileID: 877205903}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
   pressOffset: 0.01
 --- !u!65 &604947013
 BoxCollider:
@@ -17772,7 +17788,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1354344804}
+    m_TransformParent: {fileID: 1913250695}
     m_Modifications:
     - target: {fileID: -8874964412867885385, guid: 0604623366247214496cc374d1cb3678, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17792,7 +17808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0604623366247214496cc374d1cb3678, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.569946
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0604623366247214496cc374d1cb3678, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17840,10 +17856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0604623366247214496cc374d1cb3678, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1913250695}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0604623366247214496cc374d1cb3678, type: 3}
 --- !u!4 &721413915 stripped
@@ -18567,8 +18580,8 @@ MonoBehaviour:
   moveSpeed: 3
   isAscending: 1
   _spowntest: {fileID: 2083133941}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
+  buttonTop: {fileID: 18719144}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
   pressOffset: 0.01
 --- !u!65 &754133883
 BoxCollider:
@@ -21067,6 +21080,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4690547368181723998, guid: 2157a02752de0b9468e6ea917205affc, type: 3}
   m_PrefabInstance: {fileID: 841775471}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &845482541 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 1252730944}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &849863238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21500,7 +21518,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1138560081}
+    m_TransformParent: {fileID: 2032092397}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0604623366247214496cc374d1cb3678, type: 3}
       propertyPath: m_LocalScale.x
@@ -21516,15 +21534,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0604623366247214496cc374d1cb3678, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 55.555588
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0604623366247214496cc374d1cb3678, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.996294
+      value: -0.6999998
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0604623366247214496cc374d1cb3678, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.1495438
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0604623366247214496cc374d1cb3678, type: 3}
       propertyPath: m_LocalRotation.w
@@ -21628,6 +21646,11 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
   m_PrefabInstance: {fileID: 2052945355}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &877026344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 2069264480}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &877205903
 GameObject:
@@ -23460,6 +23483,11 @@ Transform:
   - {fileID: 861098682}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &945375404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 721413914}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &950618718 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4509422966248308025, guid: cd8140e976221dc4ea3e880e2faab9a7, type: 3}
@@ -27480,12 +27508,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTrigger: {fileID: 1210576331}
-  animator: {fileID: 1133444230}
+  animator: {fileID: 0}
   triggerName: Move Trigger
---- !u!95 &1133444230 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
-  m_PrefabInstance: {fileID: 2052945355}
+--- !u!1 &1134175352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 7639937}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1134751424
 PrefabInstance:
@@ -27658,7 +27686,6 @@ Transform:
   - {fileID: 953032927}
   - {fileID: 1018779370}
   - {fileID: 2032092397}
-  - {fileID: 346191463}
   - {fileID: 801240997}
   - {fileID: 133579912}
   - {fileID: 1627624297}
@@ -28222,8 +28249,8 @@ MonoBehaviour:
   moveSpeed: 0
   isAscending: 1
   _spowntest: {fileID: 2083133941}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
+  buttonTop: {fileID: 1991350988}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
   pressOffset: 0.01
 --- !u!65 &1157287817
 BoxCollider:
@@ -31871,8 +31898,8 @@ MonoBehaviour:
   moveSpeed: 2
   isAscending: 0
   _spowntest: {fileID: 2083133941}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
+  buttonTop: {fileID: 194991466}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
   pressOffset: 0.01
 --- !u!65 &1319675631
 BoxCollider:
@@ -33177,8 +33204,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 721413915}
-  - {fileID: 2069264481}
+  - {fileID: 1913250695}
+  - {fileID: 327406846}
   m_Father: {fileID: 184830661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1354759687
@@ -34568,8 +34595,8 @@ MonoBehaviour:
   moveSpeed: 3
   isAscending: 1
   _spowntest: {fileID: 2083133941}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
+  buttonTop: {fileID: 845482541}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
   pressOffset: 0.01
 --- !u!65 &1405321702
 BoxCollider:
@@ -39316,8 +39343,8 @@ MonoBehaviour:
   moveSpeed: 2
   isAscending: 0
   _spowntest: {fileID: 2083133941}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
+  buttonTop: {fileID: 1692110821}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
   pressOffset: 0.01
 --- !u!65 &1609625932
 BoxCollider:
@@ -41206,6 +41233,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4509422966248308025, guid: cd8140e976221dc4ea3e880e2faab9a7, type: 3}
   m_PrefabInstance: {fileID: 127126244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1692110821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 1322839093}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1693111412
 GameObject:
@@ -44170,6 +44202,11 @@ Transform:
   - {fileID: 644578927}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1829769117 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 872656155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1833682988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45250,11 +45287,12 @@ Transform:
   m_GameObject: {fileID: 1913250694}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.009142849, z: -0.00085716246}
-  m_LocalScale: {x: 0.014285714, y: 0.014285714, z: 0.014285714}
+  m_LocalPosition: {x: -16.569946, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 721413915}
+  m_Children:
+  - {fileID: 721413915}
+  m_Father: {fileID: 1354344804}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1913250696
 MonoBehaviour:
@@ -45274,8 +45312,8 @@ MonoBehaviour:
   moveSpeed: 0
   isAscending: 1
   _spowntest: {fileID: 2083133941}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
+  buttonTop: {fileID: 945375404}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
   pressOffset: 0.01
 --- !u!65 &1913250697
 BoxCollider:
@@ -47264,6 +47302,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6cd288fbdb5014444aa0c775b3ee5ed8, type: 3}
   m_PrefabInstance: {fileID: 1145762872}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1991350988 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 0604623366247214496cc374d1cb3678, type: 3}
+  m_PrefabInstance: {fileID: 1810227473}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1995754986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47587,8 +47630,8 @@ MonoBehaviour:
   moveSpeed: 2
   isAscending: 0
   _spowntest: {fileID: 2083133941}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
+  buttonTop: {fileID: 61141483}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
   pressOffset: 0.01
 --- !u!65 &2011783620
 BoxCollider:
@@ -47715,8 +47758,8 @@ MonoBehaviour:
   moveSpeed: 3
   isAscending: 1
   _spowntest: {fileID: 2083133941}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
+  buttonTop: {fileID: 1496052989}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
   pressOffset: 0.01
 --- !u!65 &2015194011
 BoxCollider:
@@ -48550,8 +48593,8 @@ MonoBehaviour:
   moveSpeed: 3
   isAscending: 1
   _spowntest: {fileID: 2083133941}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
+  buttonTop: {fileID: 1829769117}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
   pressOffset: 0.01
 --- !u!65 &2032092394
 BoxCollider:
@@ -48636,7 +48679,8 @@ Transform:
   m_LocalPosition: {x: 55.555588, y: -11.296294, z: -1.1495438}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 346191463}
   m_Father: {fileID: 1138560081}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2037981704 stripped
@@ -49075,6 +49119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: brighting_eyes
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: af37fb955f75e194d92bc03531cd2772, type: 3}
       propertyPath: m_Controller
       value: 
@@ -49323,7 +49371,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1354344804}
+    m_TransformParent: {fileID: 327406846}
     m_Modifications:
     - target: {fileID: -8874964412867885385, guid: 0604623366247214496cc374d1cb3678, type: 3}
       propertyPath: m_LocalPosition.y
@@ -49343,7 +49391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0604623366247214496cc374d1cb3678, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.7
+      value: 1.5998535
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0604623366247214496cc374d1cb3678, type: 3}
       propertyPath: m_LocalPosition.y
@@ -49391,10 +49439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0604623366247214496cc374d1cb3678, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 327406846}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0604623366247214496cc374d1cb3678, type: 3}
 --- !u!4 &2069264481 stripped
@@ -49785,8 +49830,8 @@ MonoBehaviour:
   moveSpeed: 3
   isAscending: 0
   _spowntest: {fileID: 2083133941}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
+  buttonTop: {fileID: 537729975}
+  pressedMaterial: {fileID: 2100000, guid: a5e4f207653616e4c8162954f34bf8da, type: 2}
   pressOffset: 0.01
 --- !u!65 &2085713172
 BoxCollider:
