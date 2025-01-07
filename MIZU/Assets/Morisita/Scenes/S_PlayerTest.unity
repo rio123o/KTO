@@ -1149,8 +1149,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1440470758182812059, guid: f988fe407f3fcf8439ee26a8a5b5b427, type: 3}
+      propertyPath: preloadedSounds.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440470758182812059, guid: f988fe407f3fcf8439ee26a8a5b5b427, type: 3}
       propertyPath: preloadedSounds.Array.data[0].type
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440470758182812059, guid: f988fe407f3fcf8439ee26a8a5b5b427, type: 3}
+      propertyPath: preloadedSounds.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 141123622f7e91044be9e7187da23add, type: 3}
+    - target: {fileID: 1440470758182812059, guid: f988fe407f3fcf8439ee26a8a5b5b427, type: 3}
+      propertyPath: preloadedSounds.Array.data[5].type
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1526790007090141688, guid: f988fe407f3fcf8439ee26a8a5b5b427, type: 3}
       propertyPath: m_Name
@@ -2373,7 +2385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4952839770621031586, guid: 6776f67da905bd54aa56026592ed6b72, type: 3}
       propertyPath: playSoundType
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2565,7 +2577,6 @@ SceneRoots:
   - {fileID: 966638142}
   - {fileID: 149005653}
   - {fileID: 1185391927}
-  - {fileID: 1199910292}
   - {fileID: 8918282249251734213}
   - {fileID: 95553294}
   - {fileID: 870148372}
@@ -2577,4 +2588,5 @@ SceneRoots:
   - {fileID: 240214952}
   - {fileID: 7553955384680359063}
   - {fileID: 2569575328516861664}
+  - {fileID: 1199910292}
   - {fileID: 8700470452503234493}
