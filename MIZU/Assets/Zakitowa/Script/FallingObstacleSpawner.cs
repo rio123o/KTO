@@ -1,54 +1,45 @@
-using System.Collections;
 using UnityEngine;
 
 public class FallingObstacleSpawner : MonoBehaviour
 {
-    public GameObject obstaclePrefab;  // 障害物のプレハブ
-    public float fallSpeed = 5f;  // 障害物の落下速度
-    public float respawnTime = 3f;  // 障害物の復活時間
-    public Vector3 spawnPosition;  // 障害物が生成される位置
+    [Header("????????")]
+    public GameObject obstaclePrefab; // ???????????????????
 
-    private GameObject currentObstacle;  // 現在アクティブな障害物
+    [Header("????")]
+    public Transform spawnPoint; // ??????????
+
+    [Header("????")]
+    public float spawnInterval = 2f; // ???????
+
+    [Header("????????")]
+    public float destroyHeight = -10f; // ??????????
 
     private void Start()
     {
-        // 最初の障害物を生成
-        SpawnNewObstacle();
+        // ???????????
+        InvokeRepeating(nameof(SpawnObstacle), 0f, spawnInterval);
     }
 
-    private void Update()
+    private void SpawnObstacle()
     {
-        if (currentObstacle != null)
+        // ??????
+        GameObject obstacle = Instantiate(obstaclePrefab, spawnPoint.position, Quaternion.identity);
+
+        // ????????????????
+        StartCoroutine(DestroyObstacleAfterFall(obstacle));
+    }
+
+    private System.Collections.IEnumerator DestroyObstacleAfterFall(GameObject obstacle)
+    {
+        // ?????????????????
+        while (obstacle != null && obstacle.transform.position.y > destroyHeight)
         {
-            // 障害物が落ちる処理
-            currentObstacle.transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
-
-            // 障害物が画面外に落ちた場合に新たに生成
-            if (currentObstacle.transform.position.y < -10f)
-            {
-                Destroy(currentObstacle);  // 現在の障害物を削除
-                SpawnNewObstacle();  // 新しい障害物を生成
-            }
+            yield return null; // ?????????
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        // プレイヤーが障害物に触れると死亡
-        if (collision.gameObject.CompareTag("Player"))
+        if (obstacle != null)
         {
-            // プレイヤーが死亡する処理（例: ヘルス減少やリスタート）
-            collision.gameObject.GetComponent<PlayerController>().Die();
-
-            // 障害物を削除して新しい障害物を生成
-            Destroy(currentObstacle);
-            SpawnNewObstacle();
+            Destroy(obstacle); // ??????
         }
-    }
-
-    private void SpawnNewObstacle()
-    {
-        // 新しい障害物を生成
-        currentObstacle = Instantiate(obstaclePrefab, spawnPosition, Quaternion.identity);
     }
 }
