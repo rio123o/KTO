@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +20,6 @@ public class EyeBlendShapeController : MonoBehaviour
 
     private Animator animator;
     private bool hasAnimationPlayed = false;
-    private bool isMonitoring = true;  //  ループの制御フラグ
 
     void Start()
     {
@@ -41,45 +39,18 @@ public class EyeBlendShapeController : MonoBehaviour
         {
             Debug.LogError("player1EyesObjectかplayer2EyesObjectがアタッチされていない");
         }
-
-        //  アニメーションの完了を監視する
-        seeAnimation().Forget();
     }
 
-    private async UniTaskVoid seeAnimation()
+    //  AnimationEventから呼び出されるメソッド
+    public void OnAnimationComplete()
     {
-        try
+        if (!hasAnimationPlayed)
         {
-            while (isMonitoring)
-            {
-                if (animator == null)
-                {
-                    await UniTask.Yield();
-                    continue;
-                }
-
-                AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
-                //  アニメーションがTake 001ステートにあり、再生が終了した場合
-                if (stateInfo.IsName("Take 001") && stateInfo.normalizedTime >= 1.0f && !hasAnimationPlayed)
-                {
-                    OpenEyes();
-                    hasAnimationPlayed = true;
-
-                    isMonitoring = false;
-
-                    break;
-                }
-
-                // 次のフレームまで待機
-                await UniTask.Yield();
-            }
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError($"seeAnimationのエラー: {ex.Message}");
+            hasAnimationPlayed = true;
+            OpenEyes();
         }
     }
+
     //  目を開けるブレンドシェイプを決定するメソッド
     private void OpenEyes()
     {
@@ -97,11 +68,5 @@ public class EyeBlendShapeController : MonoBehaviour
             Debug.Log("右側の仮面の目が開いた");
         }
 
-    }
-
-    private void OnDestroy()
-    {
-        //  ゲームオブジェクトが破棄される際に監視を停止
-        isMonitoring = false;
     }
 }
