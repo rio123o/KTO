@@ -210,6 +210,7 @@ public class MM_Test_Player : MonoBehaviour
     }
     public void Death()
     {
+        MM_SoundManager.Instance.PlaySE(MM_SoundManager.SoundType.Death);
         isDead = true;
         GroundFlagReset();
         this.gameObject.SetActive(false);

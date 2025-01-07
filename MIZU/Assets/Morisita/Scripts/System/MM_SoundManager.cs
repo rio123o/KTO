@@ -16,10 +16,12 @@ public class MM_SoundManager : MM_SingletonMonoBehaviour<MM_SoundManager>
         None,
         BGM,
         GameOver,
+        Death,
         TitleBGM,
         StageBGM,
         Transform,
         ButttonPush,
+        ClearBGM,
         // ‚±‚±‚ÉÄ¶‚·‚éSE,BGM‚Ìí—Ş‚ğ’Ç‰Á‚·‚é
 
     }
