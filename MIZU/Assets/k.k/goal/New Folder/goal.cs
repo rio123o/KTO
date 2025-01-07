@@ -9,7 +9,7 @@ public class goal : MonoBehaviour
 
     public Transform moveDirectionReference;
     public float moveSpeed = 1.0f; // z•ûŒü‚Ö‚ÌˆÚ“®‘¬“x
-
+    public float stopDistance = 0.1f; // ’âŽ~‚·‚é‹——£‚Ì‚µ‚«‚¢’l
 
     private void Awake()
     {
@@ -46,11 +46,22 @@ public class goal : MonoBehaviour
             yield break;
         }
 
-        Vector3 moveDirection = (moveDirectionReference.position - transform.position).normalized;
-
+        Vector3 targetPosition = moveDirectionReference.position;
+       
         while (true)
         {
+            Vector3 moveDirection = (targetPosition - player.transform.position).normalized;
+
+            // ˆÚ“®
             player.transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
+
+            // ‹——£‚ðŒvŽZ‚µ‚Ä’âŽ~”»’è
+            float distance = Vector3.Distance(player.transform.position, targetPosition);
+            if (distance <= stopDistance)
+            {
+                Debug.Log("Player has reached the target position.");
+                break;
+            }
 
             yield return null;
         }
