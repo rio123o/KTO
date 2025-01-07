@@ -139,7 +139,6 @@ public class MM_Test_Player : MonoBehaviour
 
     void MoveHorizontal()
     {
-        print("MoveHorizontal");
         if (_velocity.x != 0)
             _rb.AddForce(_velocity, ForceMode.Acceleration);
         else

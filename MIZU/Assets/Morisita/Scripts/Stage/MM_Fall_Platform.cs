@@ -91,6 +91,7 @@ public class MM_Fall_Platform : MonoBehaviour
             isFall = true;
             while (isFall)
             {
+                if(MM_PlayerStateManager.Instance.GetPlayerState()!=MM_PlayerStateManager.PlayerState.Pause)
                 rb.MovePosition(rb.position + _fallSpeed * Time.deltaTime);
                 await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken: linkedToken);
             }
