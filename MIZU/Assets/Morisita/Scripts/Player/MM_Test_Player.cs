@@ -58,6 +58,10 @@ public class MM_Test_Player : MonoBehaviour
     private KK_PlayerModelSwitcher _modelSwitcher;
     private MM_Player_State_GameObject_Switcher _gameObjectSwitcher;
 
+    private MM_ObserverBool _observerBool;
+    [SerializeField]
+    private Vector3 pausePosition;
+
     private void OnEnable()
     {
         MM_PlayerStateManager.Instance.SetPlayerState(MM_PlayerStateManager.PlayerState.Playing);
@@ -70,6 +74,7 @@ public class MM_Test_Player : MonoBehaviour
         _playerPhaseState = GetComponent<MM_PlayerPhaseState>();
         _modelSwitcher = GetComponent<KK_PlayerModelSwitcher>(); // PlayerModelSwitcher コンポーネントを取得
         _gameObjectSwitcher = GetComponent<MM_Player_State_GameObject_Switcher>();
+        _observerBool=new MM_ObserverBool();
 
         if (_groundCheck == null)
             Debug.LogWarning($"{nameof(_groundCheck)}がアタッチされていません");
@@ -88,6 +93,18 @@ public class MM_Test_Player : MonoBehaviour
 
     private void Update()
     {
+        bool isKeyDownPause = _observerBool.OnBoolTrueChange(IsCheckPause());
+        if (IsCheckPause())
+        {
+            if(isKeyDownPause)
+            {
+                pausePosition = transform.position;
+                _velocity = new(0, _velocity.y, _velocity.z);
+            }
+            transform.position = pausePosition;
+            return;
+        }
+
         PlayerStateUpdateFunc();
         LimitedSpeed();
         _rbvelocity = _rb.velocity;
@@ -99,11 +116,11 @@ public class MM_Test_Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        if (IsCheckPause())
+            return;
         Gravity();
         GroundCheck();
         Move();
-
     }
 
     void Gravity()
@@ -186,6 +203,11 @@ public class MM_Test_Player : MonoBehaviour
     {
         IsPuddleCollisionDeadCount();
     }
+
+    private bool IsCheckPause()
+    {
+        return MM_PlayerStateManager.Instance.GetPlayerState() == MM_PlayerStateManager.PlayerState.Pause;
+    }
     public void Death()
     {
         isDead = true;
@@ -203,6 +225,8 @@ public class MM_Test_Player : MonoBehaviour
     // publicにする必要がある
     public void OnMoveHorizontal(InputAction.CallbackContext context)
     {
+        if (IsCheckPause())
+            return;
         // 固体の時水に触れてなかったら動けない
         if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Solid)
             if (!isOnWater)
@@ -225,6 +249,8 @@ public class MM_Test_Player : MonoBehaviour
     }
     public void OnMoveVertical(InputAction.CallbackContext context)
     {
+        if (IsCheckPause())
+            return;
         // 気体でなければ縦移動はできない
         if (_playerPhaseState.GetState() != MM_PlayerPhaseState.State.Gas)
             return;
@@ -236,6 +262,8 @@ public class MM_Test_Player : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (IsCheckPause())
+            return;
         // 押した瞬間だけ反応する
         if (!context.performed) return;
         // 地面にいないなら跳べない
@@ -281,6 +309,8 @@ public class MM_Test_Player : MonoBehaviour
     /// </summary>
     public void OnStateChangeGas(InputAction.CallbackContext context)
     {
+        if (IsCheckPause())
+            return;
         if (!context.performed) return;
 
         OnStateChangeGas();
@@ -288,6 +318,8 @@ public class MM_Test_Player : MonoBehaviour
 
     public void OnStateChangeGas()
     {
+        if (IsCheckPause())
+            return;
         // 水じゃなかったら受け付けない
         if (_playerPhaseState.GetState() != MM_PlayerPhaseState.State.Liquid) return;
 
@@ -313,12 +345,16 @@ public class MM_Test_Player : MonoBehaviour
     /// </summary>
     public void OnStateChangeSolid(InputAction.CallbackContext context)
     {
+        if (IsCheckPause())
+            return;
         if (!context.performed) return;
 
         OnStateChangeSolid();
     }
     public void OnStateChangeSolid()
     {
+        if (IsCheckPause())
+            return;
         // 水じゃなかったら受け付けない
         if (_playerPhaseState.GetState() != MM_PlayerPhaseState.State.Liquid) return;
 
@@ -340,12 +376,16 @@ public class MM_Test_Player : MonoBehaviour
     /// </summary>
     public void OnStateChangeLiquid(InputAction.CallbackContext context)
     {
+        if (IsCheckPause())
+            return;
         if (!context.performed) return;
 
         OnStateChangeLiquid();
     }
     public void OnStateChangeLiquid()
     {
+        if (IsCheckPause())
+            return;
         // 固体・気体じゃなかったら受け付けない
         if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Liquid) return;
 
