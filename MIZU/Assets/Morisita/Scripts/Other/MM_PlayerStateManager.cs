@@ -42,6 +42,10 @@ public class MM_PlayerStateManager : MM_SingletonMonoBehaviour<MM_PlayerStateMan
     }
     public void SetPlayerState(PlayerState state)
     {
+        if(state==PlayerState.Death)
+        {
+            MM_SoundManager.Instance.PlaySE(MM_SoundManager.SoundType.Death);
+        }
         playerState = state;
         playerStates.Push(state);
     }
