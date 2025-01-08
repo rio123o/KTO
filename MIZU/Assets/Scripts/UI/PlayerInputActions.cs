@@ -35,6 +35,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""91b21dd8-d534-4c5c-a5e8-bc41227a06fb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -59,6 +68,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""NextImage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a31af1f1-9b6d-48dc-b744-df71f0180205"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0a43af0-a704-4a33-abbb-fdacde07f634"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -68,6 +99,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         // GamePlay
         m_GamePlay = asset.FindActionMap("GamePlay", throwIfNotFound: true);
         m_GamePlay_NextImage = m_GamePlay.FindAction("NextImage", throwIfNotFound: true);
+        m_GamePlay_Back = m_GamePlay.FindAction("Back", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -130,11 +162,13 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_GamePlay;
     private List<IGamePlayActions> m_GamePlayActionsCallbackInterfaces = new List<IGamePlayActions>();
     private readonly InputAction m_GamePlay_NextImage;
+    private readonly InputAction m_GamePlay_Back;
     public struct GamePlayActions
     {
         private @PlayerInputActions m_Wrapper;
         public GamePlayActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @NextImage => m_Wrapper.m_GamePlay_NextImage;
+        public InputAction @Back => m_Wrapper.m_GamePlay_Back;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -147,6 +181,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @NextImage.started += instance.OnNextImage;
             @NextImage.performed += instance.OnNextImage;
             @NextImage.canceled += instance.OnNextImage;
+            @Back.started += instance.OnBack;
+            @Back.performed += instance.OnBack;
+            @Back.canceled += instance.OnBack;
         }
 
         private void UnregisterCallbacks(IGamePlayActions instance)
@@ -154,6 +191,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @NextImage.started -= instance.OnNextImage;
             @NextImage.performed -= instance.OnNextImage;
             @NextImage.canceled -= instance.OnNextImage;
+            @Back.started -= instance.OnBack;
+            @Back.performed -= instance.OnBack;
+            @Back.canceled -= instance.OnBack;
         }
 
         public void RemoveCallbacks(IGamePlayActions instance)
@@ -174,5 +214,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     public interface IGamePlayActions
     {
         void OnNextImage(InputAction.CallbackContext context);
+        void OnBack(InputAction.CallbackContext context);
     }
 }

@@ -150,4 +150,48 @@ public class ImageSwitcher : MonoBehaviour
 
         return UniTask.CompletedTask;
     }
+
+    public void HandleBackImage()
+    {
+        if (!isSequenceActive)
+            return;
+
+        //  表示されている画像が2枚目以降の時
+        if (currentStep > 1)
+        {
+            //  現在表示されている画像
+            var currentImage = sequenceImages[currentStep - 1];
+            if (currentImage != null)
+            {
+                currentImage.gameObject.SetActive(false);
+            }
+
+            currentStep--;
+
+            //  前の画像
+            var previousImage = sequenceImages[currentStep - 1];
+            if (previousImage != null)
+            {
+                previousImage.gameObject.SetActive(true);
+            }
+            return;
+        }
+
+        //  表示されている画像が1枚目の時
+        //  全ての画像を非表示にする
+        foreach (var image in sequenceImages)
+        {
+            if (image != null)
+            {
+                image.gameObject.SetActive(false);
+            }
+        }
+        currentStep = 0;
+        isSequenceActive = false;
+        //  ボタンを再度有効化する
+        controlButton.interactable = true;
+        // ボタンを選択状態に戻す
+        EventSystem.current.SetSelectedGameObject(controlButton.gameObject);
+
+    }
 }
