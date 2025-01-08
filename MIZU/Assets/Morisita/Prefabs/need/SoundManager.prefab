@@ -53,6 +53,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 9b6cc246c06cf3c4789542949e2986ba, type: 3}
   - type: 1
     clip: {fileID: 8300000, guid: 6ce06f97939519242a5185c3b913a809, type: 3}
+  - type: 3
+    clip: {fileID: 8300000, guid: 6ce06f97939519242a5185c3b913a809, type: 3}
+  - type: 4
+    clip: {fileID: 8300000, guid: da4b1d2f50788214fb114a49077ac8df, type: 3}
+  - type: 4
+    clip: {fileID: 8300000, guid: da4b1d2f50788214fb114a49077ac8df, type: 3}
 --- !u!82 &7827965341582338262
 AudioSource:
   m_ObjectHideFlags: 0
@@ -67,7 +73,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

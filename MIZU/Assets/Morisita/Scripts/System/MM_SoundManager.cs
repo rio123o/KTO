@@ -16,6 +16,12 @@ public class MM_SoundManager : MM_SingletonMonoBehaviour<MM_SoundManager>
         None,
         BGM,
         GameOver,
+        Death,
+        TitleBGM,
+        StageBGM,
+        Transform,
+        ButttonPush,
+        ClearBGM,
         // ここに再生するSE,BGMの種類を追加する
 
     }
@@ -52,19 +58,6 @@ public class MM_SoundManager : MM_SingletonMonoBehaviour<MM_SoundManager>
     {
         audioClips[type] = clip;
     }
-
-    //public void LoadSoundFromResources(SoundType type, string path)
-    //{
-    //    AudioClip clip = Resources.Load<AudioClip>(path);
-    //    if (clip != null)
-    //    {
-    //        audioClips[type] = clip;
-    //    }
-    //    else
-    //    {
-    //        Debug.LogWarning($"オーディオクリップのパスが見つかりません。: {path}");
-    //    }
-    //}
 
     /// <summary>
     /// SEを再生します
