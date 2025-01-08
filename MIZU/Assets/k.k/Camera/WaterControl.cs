@@ -80,6 +80,9 @@ public class WaterControl : MonoBehaviour
 
         // F‚ğ•ÏX
         buttonTop.GetComponent<Renderer>().material = pressedMaterial;
+
+        MM_SoundManager.Instance.PlaySE(MM_SoundManager.SoundType.ButttonPush);
+        MM_SoundManager.Instance.PlaySE(MM_SoundManager.SoundType.WaterUpDown);
     }
 
     public void ResetWater()

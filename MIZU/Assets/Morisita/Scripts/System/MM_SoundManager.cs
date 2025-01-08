@@ -22,6 +22,7 @@ public class MM_SoundManager : MM_SingletonMonoBehaviour<MM_SoundManager>
         Transform,
         ButttonPush,
         ClearBGM,
+        WaterUpDown,
         // ‚±‚±‚ÉÄ¶‚·‚éSE,BGM‚Ìí—Ş‚ğ’Ç‰Á‚·‚é
 
     }
