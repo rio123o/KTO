@@ -80,7 +80,7 @@ public class MM_Test_Player : MonoBehaviour
             Debug.LogWarning($"{nameof(_groundCheck)}がアタッチされていません");
 
         _gameObjectSwitcher.InitSwitch();
-        _playerPhaseState.ChangeState(MM_PlayerPhaseState.State.Liquid);
+        _playerPhaseState.InitState();
 
 
         nowGravity = _defaultGravity;
