@@ -51,7 +51,7 @@ MonoBehaviour:
   bgmVolume: 1
   preloadedSounds:
   - type: 3
-    clip: {fileID: 8300000, guid: f77e688d2086d2b43af61846975b57d1, type: 3}
+    clip: {fileID: 8300000, guid: 036928590a2195e42a7842ee68d9f14e, type: 3}
   - type: 4
     clip: {fileID: 8300000, guid: 6ce06f97939519242a5185c3b913a809, type: 3}
   - type: 5
