@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2489,7 +2489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3effbc495eeeba84fa43404c1eed37df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9756064
+      value: 1.9756057
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3effbc495eeeba84fa43404c1eed37df, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4555,7 +4555,6 @@ MonoBehaviour:
   ice: 0
   cloud: 2
   slime: 0
-  _groundCheck: {fileID: 0}
 --- !u!1001 &507923326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4875,10 +4874,6 @@ MonoBehaviour:
   descendAmount: 1
   moveSpeed: 2
   isAscending: 1
-  _spowntest: {fileID: 0}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
-  pressOffset: 0.01
 --- !u!65 &558195305
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5081,10 +5076,6 @@ MonoBehaviour:
   descendAmount: 26
   moveSpeed: 5
   isAscending: 0
-  _spowntest: {fileID: 0}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
-  pressOffset: 0.01
 --- !u!65 &560345065
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13060,7 +13051,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 24.180218
+  orthographic size: 25.737188
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -15133,10 +15124,6 @@ MonoBehaviour:
   descendAmount: 20
   moveSpeed: 2
   isAscending: 0
-  _spowntest: {fileID: 0}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
-  pressOffset: 0.01
 --- !u!65 &1609625932
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16455,55 +16442,6 @@ MonoBehaviour:
   ice: 0
   cloud: 2
   slime: 0
-  _groundCheck: {fileID: 0}
---- !u!1 &1735217450
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1735217452}
-  - component: {fileID: 1735217453}
-  m_Layer: 0
-  m_Name: dropspawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1735217452
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735217450}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 224.55, y: 17, z: -4.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1735217453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735217450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68f34d8f032c48e4fa0d20a9a620cbcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 4799441894072772322, guid: 5a6eadb123a94494792d160f19974326, type: 3}
-  spawnInterval: 2
-  spawnPosition: {x: 224.55, y: 17, z: -4.5}
-  destroyHeight: -10
 --- !u!1001 &1761591522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18989,10 +18927,6 @@ MonoBehaviour:
   descendAmount: 1
   moveSpeed: 3
   isAscending: 1
-  _spowntest: {fileID: 0}
-  buttonTop: {fileID: 0}
-  pressedMaterial: {fileID: 0}
-  pressOffset: 0.01
 --- !u!65 &2032092394
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20334,4 +20268,3 @@ SceneRoots:
   - {fileID: 298649954}
   - {fileID: 1423969614}
   - {fileID: 1644386492}
-  - {fileID: 1735217452}
