@@ -29,4 +29,9 @@ public class MM_PlayerPhaseState : MonoBehaviour
     {
         return m_state;
     }
+
+    public void InitState()
+    {
+        m_state = State.Liquid;
+    }
 }
