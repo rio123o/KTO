@@ -30,11 +30,6 @@ public class goalDecisionScript : MonoBehaviour
 
         Debug.Log("goal");
         isGoal = true;
-        //  tagがPlayerのオブジェクトを全て消す
-        foreach (GameObject player in objects)
-        {
-            Destroy(player);
-        }
 
         SceneManager.LoadScene("goalScene");
     }
