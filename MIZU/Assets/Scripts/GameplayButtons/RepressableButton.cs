@@ -18,15 +18,6 @@ public abstract class RepressableButton : MonoBehaviour, IButtonAction
 
         if (isPressed) return;  //  既に押されていた場合は何もしない
 
-        //  プレイヤーの状態を取得する
-        var playerPhaseState = collision.gameObject.GetComponent<MM_PlayerPhaseState>();
-
-        //  プレイヤーがSolidの状態ではない場合に返す
-        if (playerPhaseState == null || playerPhaseState.GetState() != MM_PlayerPhaseState.State.Solid)
-        {
-            Debug.Log($"{gameObject.name}: プレイヤーはSolidの状態ではない");
-            return;
-        }
 
         //  ボタンが押された状態にする
         isPressed = true;
