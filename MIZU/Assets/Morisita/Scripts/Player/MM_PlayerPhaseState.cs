@@ -21,7 +21,7 @@ public class MM_PlayerPhaseState : MonoBehaviour
 
     public void ChangeState(MM_PlayerPhaseState.State state)
     {
-        MM_SoundManager.Instance.PlaySE(MM_SoundManager.SoundType.Transform,0.3f);
+        MM_SoundManager.Instance.PlaySE(MM_SoundManager.SoundType.Transform);
         m_state = state;
     }
 

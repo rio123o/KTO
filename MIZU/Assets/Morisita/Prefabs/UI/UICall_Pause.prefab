@@ -61,14 +61,6 @@ MonoBehaviour:
       m_Action: Player Pause Input
       m_Flags: 0
     - m_Name: 
-      m_Id: 25d2914d-15ed-438f-8e17-623b9c67f7df
-      m_Path: <XInputController>/start
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player Pause Input
-      m_Flags: 0
-    - m_Name: 
       m_Id: d5f6fcfa-0ef9-4fb1-b360-7b735881f537
       m_Path: <Gamepad>/start
       m_Interactions: 
