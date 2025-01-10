@@ -144,7 +144,7 @@ public class MM_Fall_Platform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("puddle"))
+        if (other.gameObject.CompareTag("puddle")&&isFall)
         {
             print("hureta");
 
