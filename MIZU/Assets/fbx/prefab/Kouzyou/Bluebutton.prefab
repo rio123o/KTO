@@ -130,6 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f4eb0c863eeba4992f7b98dd3cf588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonTop: {fileID: 4088845969969836156}
+  pressOffset: 0.01
   rotateObject: {fileID: 0}
 --- !u!65 &8834188656231262954
 BoxCollider:

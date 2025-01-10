@@ -23,12 +23,12 @@ public class WaterControl : MonoBehaviour
     public float pressOffset = 0.01f;   // ボタンが下がる距離
 
     private Vector3 initialbuttonPosition;  // ボタン上部の初期位置
-   
+
     private void Start()
     {
         _observer = new MM_ObserverBool();
         initialPosition = water.transform.position;
-        
+
         initialbuttonPosition = buttonTop.transform.localPosition;
         buttonMaterial = buttonTop.GetComponent<Renderer>().material;
     }
@@ -60,6 +60,17 @@ public class WaterControl : MonoBehaviour
     {
         if (other.CompareTag("Player") && !isMoving) // 移動中でない場合のみ動作
         {
+
+            //  プレイヤーの状態を取得する
+            var playerPhaseState = other.gameObject.GetComponent<MM_PlayerPhaseState>();
+
+            //  プレイヤーがSolidの状態ではない場合に返す
+            if (playerPhaseState == null || playerPhaseState.GetState() != MM_PlayerPhaseState.State.Solid)
+            {
+                Debug.Log($"{gameObject.name}: プレイヤーはSolidの状態ではない");
+                return;
+            }
+
             // 移動目標位置を設定
             float direction = isAscending ? ascendAmount : -descendAmount;
             targetPosition = water.transform.position + new Vector3(0, direction, 0);
@@ -69,20 +80,22 @@ public class WaterControl : MonoBehaviour
 
             // コライダーを一時的に無効化
             this.GetComponent<Collider>().enabled = false;
+
+            // ボタン上部を下げる
+            buttonTop.transform.localPosition = new Vector3(
+                initialbuttonPosition.x,
+                initialbuttonPosition.y - pressOffset,
+                initialbuttonPosition.z
+            );
+
+            // 色を変更
+            buttonTop.GetComponent<Renderer>().material = pressedMaterial;
+
+            MM_SoundManager.Instance.PlaySE(MM_SoundManager.SoundType.ButtonPush);
+            MM_SoundManager.Instance.PlaySE(MM_SoundManager.SoundType.WaterUpDown);
+
         }
-     
-        // ボタン上部を下げる
-        buttonTop.transform.localPosition = new Vector3(
-            initialbuttonPosition.x,
-            initialbuttonPosition.y - pressOffset,
-            initialbuttonPosition.z
-        );
 
-        // 色を変更
-        buttonTop.GetComponent<Renderer>().material = pressedMaterial;
-
-        MM_SoundManager.Instance.PlaySE(MM_SoundManager.SoundType.ButtonPush);
-        MM_SoundManager.Instance.PlaySE(MM_SoundManager.SoundType.WaterUpDown);
     }
 
     public void ResetWater()
@@ -91,8 +104,8 @@ public class WaterControl : MonoBehaviour
         isMoving = false;
         this.GetComponent<Collider>().enabled = true; // コライダーを再度有効化
 
-       
-        buttonTop.transform.localPosition = initialbuttonPosition;                                    
+
+        buttonTop.transform.localPosition = initialbuttonPosition;
         // 色を初期状態に戻す
         buttonTop.GetComponent<Renderer>().material = buttonMaterial;
 
