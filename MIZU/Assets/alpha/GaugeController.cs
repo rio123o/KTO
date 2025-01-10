@@ -67,7 +67,7 @@ public class GaugeController : MonoBehaviour
                 // プレイヤー1がヒールスポットに衝突したかチェック
                 foreach (Collider col in _collisionManager.GetPlayer1HitColliders())
                 {
-                    if (isOnGround || isOnWater)
+                    if (isOnGround || isOnWater || allowedTags.Contains(col.gameObject.tag))
                     //if(allowedTags.Contains(col.gameObject.tag))
                     {
                         Heal(100f);  // プレイヤー1の回復量
@@ -80,7 +80,7 @@ public class GaugeController : MonoBehaviour
                 // プレイヤー2がヒールスポットに衝突したかチェック
                 foreach (Collider col in _collisionManager.GetPlayer2HitColliders())
                 {
-                    if (isOnGround || isOnWater)
+                    if (isOnGround || isOnWater || allowedTags.Contains(col.gameObject.tag))
                     //if(allowedTags.Contains(col.gameObject.tag))
                 {
                         Heal(100f);  // プレイヤー2の回復量

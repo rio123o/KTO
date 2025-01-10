@@ -4,31 +4,43 @@ using UnityEngine;
 
 public class HealArea : MonoBehaviour
 {
-    [HideInInspector] public bool Heal = false;
+    [SerializeField] private float healAmount = 100f; // 回復量
+    [SerializeField] private float healInterval = 1f; // 回復間隔
 
-    private void Update()
+    private List<GaugeController> playersInArea = new List<GaugeController>(); // エリア内のプレイヤーリスト
+
+    private void OnTriggerStay(Collider other)
     {
-        Debug.Log(Heal);
-    }
-    void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("当たった!");
-            Heal = true;
+            Debug.Log("bbbbbbbbbbbbbbbbbbbbb");
+            GaugeController playerGauge = other.GetComponent<GaugeController>();
+            if (playerGauge != null && !playersInArea.Contains(playerGauge))
+            {
+                playersInArea.Add(playerGauge); // エリア内のプレイヤーを追加
+                StartCoroutine(HealPlayer(playerGauge)); // 回復を開始
+            }
         }
-        else
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
         {
-
-
+            GaugeController playerGauge = other.GetComponent<GaugeController>();
+            if (playerGauge != null && playersInArea.Contains(playerGauge))
+            {
+                playersInArea.Remove(playerGauge); // エリア内のプレイヤーを削除
+            }
         }
     }
-    void OnTriggerExit(Collider other)
+
+    private IEnumerator HealPlayer(GaugeController playerGauge)
     {
-        if (other.gameObject.tag == "Player")
+        while (playersInArea.Contains(playerGauge))
         {
-            Debug.Log("当たってない!");
-            Heal = false;
+            playerGauge.Heal(healAmount); // プレイヤーを回復
+            yield return new WaitForSeconds(healInterval); // 指定時間ごとに回復
         }
     }
 }
