@@ -123,7 +123,8 @@ public class GaugeController : MonoBehaviour
     IEnumerator DamageCoroutine(float damage)
     {
         Vector2 currentSize = _gauge.GetComponent<RectTransform>().sizeDelta;
-        currentSize.x -= damage;
+        float damagePerFrame = damage * Time.deltaTime; // Time.deltaTimeを使ってフレームごとのダメージを計算
+        currentSize.x -= damagePerFrame;
 
         if (currentSize.x <= 0)
         {
@@ -145,8 +146,6 @@ public class GaugeController : MonoBehaviour
             // playerScriptが取得できた場合、OnStateChangeLiquidを呼び出す
             if (playerScript != null)
             {
-                // 変えといたよ
-                //playerScript.ForceStateChangeLiquid();
                 playerScript.OnStateChangeLiquid();
             }
         }
@@ -154,6 +153,7 @@ public class GaugeController : MonoBehaviour
         _gauge.GetComponent<RectTransform>().sizeDelta = currentSize;
         yield return null;
     }
+
 
 
     // 回復処理

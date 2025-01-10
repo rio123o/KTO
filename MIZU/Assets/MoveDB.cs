@@ -18,7 +18,7 @@ public class BoxMover : MonoBehaviour
     {
         // 生成された瞬間の時間を基準に移動距離を計算
         float elapsedTime = Time.time - spawnTime; // このダンボールの経過時間
-        float offset = elapsedTime * speed;
+        float offset = elapsedTime * speed * Time.deltaTime;
         transform.position = startPosition + new Vector3(offset, 0, 0);
 
         // 距離を超えたらオブジェクトを削除
