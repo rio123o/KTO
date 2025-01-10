@@ -7788,14 +7788,19 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377936943}
   serializedVersion: 2
+<<<<<<< Updated upstream:MIZU/Assets/k.k/Camera/stage gimic 1.unity
   m_LocalRotation: {x: 0, y: -1e-45, z: 0, w: 1}
   m_LocalPosition: {x: -10.226666, y: 3.9547007, z: -10}
+=======
+  m_LocalRotation: {x: -0.051813055, y: 0, z: 0, w: 0.9986568}
+  m_LocalPosition: {x: -7.04, y: 5.2, z: -15.04}
+>>>>>>> Stashed changes:MIZU/Assets/alpha/stage gimic 1.unity
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1351028081}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -5.94, y: 0, z: 0}
 --- !u!114 &1377936947
 MonoBehaviour:
   m_ObjectHideFlags: 0
