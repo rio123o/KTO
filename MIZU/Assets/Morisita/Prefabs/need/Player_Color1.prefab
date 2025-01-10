@@ -52,6 +52,7 @@ GameObject:
   - component: {fileID: 7565571396341381369}
   - component: {fileID: 6052246755116407886}
   - component: {fileID: 4770366017525694248}
+  - component: {fileID: 1065496991194921528}
   m_Layer: 9
   m_Name: Player_Color1
   m_TagString: Player
@@ -311,22 +312,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bad68fe9-7350-4e74-a577-fbb12f1d2594
     m_ActionName: Player/StateChange_Slime[/Keyboard/s]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MM_Test_ObjectUIMarker, Assembly-CSharp
-        m_MethodName: UI_Display
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 2981ebf7-3e17-4350-8211-c2fa4b2c3ae2
-    m_ActionName: Player/SolidModeChange
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -359,6 +344,7 @@ MonoBehaviour:
   isDead: 0
   _velocity: {x: 0, y: 0, z: 0}
   _rbvelocity: {x: 0, y: 0, z: 0}
+  pausePosition: {x: 0, y: 0, z: 0}
 --- !u!114 &7885911688773437202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,6 +433,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particle: {fileID: 7966082157522804385, guid: aa62d2984d1825541a36fc6b2d610b11, type: 3}
+--- !u!114 &1065496991194921528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191589095473248152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb4a8fa51405dfa4da37eed13af611fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5265254597551202488
 GameObject:
   m_ObjectHideFlags: 0
