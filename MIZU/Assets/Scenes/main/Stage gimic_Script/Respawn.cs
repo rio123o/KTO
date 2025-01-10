@@ -14,6 +14,7 @@ public class Respawn : MonoBehaviour
         // 落下ゾーンに触れた際にスタート位置に戻す
         if (other.gameObject.CompareTag("Dead Zone"))
         {
+            Debug.Log("Death");
             RespawnPlayer();
         }
     }

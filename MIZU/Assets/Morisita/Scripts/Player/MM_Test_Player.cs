@@ -197,8 +197,12 @@ public class MM_Test_Player : MonoBehaviour
 
     }
 
-    private void PlayerGasStateUpdateFunc() { }
-    private void PlayerSolidStateUpdateFunc() { }
+    private void PlayerGasStateUpdateFunc() {
+        IsPuddleCollisionDeadCount();
+    }
+    private void PlayerSolidStateUpdateFunc() {
+       
+    }
     private void PlayerLiquidStateUpdateFunc()
     {
         IsPuddleCollisionDeadCount();
