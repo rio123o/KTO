@@ -148,7 +148,7 @@ public class MM_Fall_Platform : MonoBehaviour
         {
             print("hureta");
 
-            //SetActiveFalseFallPlatform();
+            SetActiveFalseFallPlatform();
 
             isFinished = true;
             isFall = false;
