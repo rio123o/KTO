@@ -23,7 +23,7 @@ public class GaugeController : MonoBehaviour
     public float ice = 1;
     public float cloud = 1;
     public float slime = 1;
-
+    
     bool isOnGround = false;
     bool isOnWater = false;
     //private bool isDead = false;
@@ -44,6 +44,7 @@ public class GaugeController : MonoBehaviour
 
         if (_groundCheck == null)
             Debug.LogWarning($"{nameof(_groundCheck)}がアタッチされていません");
+
     }
 
     private void FixedUpdate()
@@ -53,6 +54,7 @@ public class GaugeController : MonoBehaviour
 
     void Update()
     {
+        
         //if (!isDead)
         //{
             string currentModelTag = (player == Player.Player1) ? _modeManager.player1ModelTag : _modeManager.player2ModelTag;
@@ -127,7 +129,7 @@ public class GaugeController : MonoBehaviour
 
         // ダメージを減少させる処理
         Vector2 currentSize = _gauge.GetComponent<RectTransform>().sizeDelta;
-        currentSize.x -= damagePerFrame;
+        currentSize.x -= damagePerFrame*Time.deltaTime;
 
         // 体力が0以下になった場合、体力を0に設定
         if (currentSize.x <= 0)
