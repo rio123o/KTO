@@ -10650,7 +10650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4033103821797398191, guid: 1f1533fe6c478dd4e9659c203060092c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.32
+      value: 2.97
       objectReference: {fileID: 0}
     - target: {fileID: 4033103821797398191, guid: 1f1533fe6c478dd4e9659c203060092c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -23654,7 +23654,7 @@ MonoBehaviour:
   player: 1
   water: 0
   ice: 0
-  cloud: 6
+  cloud: 8
   slime: 0
   _groundCheck: {fileID: 630528314}
 --- !u!1 &738059858
@@ -27428,7 +27428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4033103821797398191, guid: 1f1533fe6c478dd4e9659c203060092c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.27
+      value: 4.52
       objectReference: {fileID: 0}
     - target: {fileID: 4033103821797398191, guid: 1f1533fe6c478dd4e9659c203060092c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -56435,7 +56435,7 @@ MonoBehaviour:
   player: 0
   water: 0
   ice: 0
-  cloud: 6
+  cloud: 8
   slime: 0
   _groundCheck: {fileID: 187473929}
 --- !u!1001 &1784335226
@@ -66600,15 +66600,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1413822251913142161, guid: e5333d21786310242ae41eb26fb6afec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 303.9
+      value: 190.7
       objectReference: {fileID: 0}
     - target: {fileID: 1413822251913142161, guid: e5333d21786310242ae41eb26fb6afec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: -15.78
       objectReference: {fileID: 0}
     - target: {fileID: 1413822251913142161, guid: e5333d21786310242ae41eb26fb6afec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.34
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 1413822251913142161, guid: e5333d21786310242ae41eb26fb6afec, type: 3}
       propertyPath: m_LocalRotation.w
