@@ -25334,7 +25334,7 @@ Transform:
   m_GameObject: {fileID: 822710192}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -222.63, y: -3.83, z: 17.89}
+  m_LocalPosition: {x: -222.63, y: -2.72, z: 17.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25352,9 +25352,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f86f918a5b54bc41b7a9103e1da5dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxPrefab: {fileID: 5126480625339769412, guid: 0695a2206b2e232478dcc48d4de9042e, type: 3}
+  boxPrefabs:
+  - {fileID: 1502323046235358495, guid: b896ca7e53b60704bbde7c474c3b7c0f, type: 3}
+  - {fileID: 5126480625339769412, guid: 0695a2206b2e232478dcc48d4de9042e, type: 3}
   spawnPoint: {fileID: 822710193}
-  spawnInterval: 2
+  spawnInterval: 6
 --- !u!1001 &823507527
 PrefabInstance:
   m_ObjectHideFlags: 0

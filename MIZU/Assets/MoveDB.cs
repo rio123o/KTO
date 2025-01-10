@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BoxMover : MonoBehaviour
@@ -7,33 +5,26 @@ public class BoxMover : MonoBehaviour
     public float speed = 2f;      // 移動速度
     public float distance = 5f;  // 移動距離
     private Vector3 startPosition;
-    private bool isMoving = true;
+    private float spawnTime;     // 生成された瞬間の時間
 
     void Start()
     {
-        // 初期位置を記録
+        // 初期位置と生成時間を記録
         startPosition = transform.position;
+        spawnTime = Time.time; // このダンボールが生成された瞬間の時間
     }
 
     void Update()
     {
-        if (isMoving)
-        {
-            // 時間に基づいてスムーズに移動
-            float offset = Time.time * speed;
-            transform.position = startPosition + new Vector3(offset, 0, 0);
+        // 生成された瞬間の時間を基準に移動距離を計算
+        float elapsedTime = Time.time - spawnTime; // このダンボールの経過時間
+        float offset = elapsedTime * speed;
+        transform.position = startPosition + new Vector3(offset, 0, 0);
 
-            // 移動距離が指定値を超えたら終了
-            if (Vector3.Distance(startPosition, transform.position) >= distance)
-            {
-                isMoving = false;
-                Destroy(gameObject); // オブジェクトを削除
-            }
+        // 距離を超えたらオブジェクトを削除
+        if (offset >= distance)
+        {
+            Destroy(gameObject);
         }
     }
 }
-
-//これでダンボール動くと思う
-
-//移動方向を変更したい場合は、new Vector3の値をnew Vector3(0, offset, 0)（縦移動）やnew Vector3(0, 0, offset)（奥行き移動）に変更して
-//ダンボールプレハブ化してこのスクリプトアタッチして

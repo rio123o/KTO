@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BoxSpawner : MonoBehaviour
 {
-    public GameObject boxPrefab; // ダンボールのPrefab
-    public Transform spawnPoint; // スポーン位置
+    public GameObject[] boxPrefabs; // ダンボールのPrefabを格納する配列
+    public Transform spawnPoint;   // スポーン位置
     public float spawnInterval = 2f; // スポーン間隔
 
     private float timer;
@@ -14,7 +12,6 @@ public class BoxSpawner : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        // 一定間隔でダンボールを生成
         if (timer >= spawnInterval)
         {
             SpawnBox();
@@ -24,10 +21,12 @@ public class BoxSpawner : MonoBehaviour
 
     void SpawnBox()
     {
-        if (boxPrefab != null && spawnPoint != null)
+        if (boxPrefabs.Length > 0 && spawnPoint != null)
         {
-            // スポーン位置にPrefabを生成
-            Instantiate(boxPrefab, spawnPoint.position, spawnPoint.rotation);
+            // 配列からランダムにPrefabを選択して生成
+            int randomIndex = Random.Range(0, boxPrefabs.Length);
+            Instantiate(boxPrefabs[randomIndex], spawnPoint.position, spawnPoint.rotation);
         }
     }
 }
+
