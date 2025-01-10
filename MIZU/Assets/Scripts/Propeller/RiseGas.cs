@@ -20,6 +20,11 @@ public class RiseGas : MonoBehaviour
 
     private new Rigidbody rigidbody;
 
+    void OnEnable()
+    {
+     activeDirections.Clear();
+    }
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
