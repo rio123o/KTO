@@ -122,10 +122,14 @@ public class GaugeController : MonoBehaviour
 
     IEnumerator DamageCoroutine(float damage)
     {
+        // 時間経過に基づくダメージ減少速度を調整
+        float damagePerFrame = damage / 1.0f; // ダメージを減少させる速度を調整（1秒間に減る量）
+
+        // ダメージを減少させる処理
         Vector2 currentSize = _gauge.GetComponent<RectTransform>().sizeDelta;
-        float damagePerFrame = damage * Time.deltaTime; // Time.deltaTimeを使ってフレームごとのダメージを計算
         currentSize.x -= damagePerFrame;
 
+        // 体力が0以下になった場合、体力を0に設定
         if (currentSize.x <= 0)
         {
             currentSize.x = 0;
@@ -150,9 +154,11 @@ public class GaugeController : MonoBehaviour
             }
         }
 
+        // ゲージのサイズを更新
         _gauge.GetComponent<RectTransform>().sizeDelta = currentSize;
         yield return null;
     }
+
 
 
 
