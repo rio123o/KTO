@@ -276,7 +276,9 @@ public class MM_Test_Player : MonoBehaviour
         if (isOnWater) return;
         // 気体なら跳べない
         if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Gas) return;
-
+        if(_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Solid)
+            _rb.AddForce(new Vector3(0, _JumpPower*1.5f, 0), ForceMode.VelocityChange);
+        else
         _rb.AddForce(new Vector3(0, _JumpPower, 0), ForceMode.VelocityChange);
 
         //print("Jumpが押されました");
