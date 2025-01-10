@@ -16,6 +16,29 @@ public class SwitchCamera : MonoBehaviour
         defaultPriority = virtualCamera.Priority;
     }
 
+    void Update()
+    {
+        // プレイヤーがコライダー内にいるか確認
+        if (!IsPlayerInCollider())
+        {
+            virtualCamera.Priority = defaultPriority; // カメラを元に戻す
+        }
+    }
+
+    private bool IsPlayerInCollider()
+    {
+        // Collider範囲内にいるプレイヤーオブジェクトをチェック
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, GetComponent<Collider>().bounds.extents.magnitude);
+
+        foreach (Collider col in hitColliders)
+        {
+            if (col.CompareTag("Player"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     /// <summary>
     /// Colliderの範囲に入り続けている間実行され続ける
     /// </summary>
